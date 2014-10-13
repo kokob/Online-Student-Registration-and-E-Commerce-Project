@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author kokob
  */
-
+@Transactional(propagation=Propagation.MANDATORY)
 public class CustomerDAO {
 
 //    public CustomerDAO() {
@@ -24,41 +24,37 @@ public class CustomerDAO {
     
    
     private SessionFactory sessionFactory;
-
+@Transactional(propagation=Propagation.SUPPORTS)
  public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
     
-  @Transactional(propagation=Propagation.MANDATORY)
+  
     public void addCustomer(Customer customer){
         
         sessionFactory.getCurrentSession().persist(customer);
         
     }
 
-    @Transactional(propagation=Propagation.MANDATORY)
     public List<Customer> getAll() {
         List<Customer> customers = sessionFactory.getCurrentSession().createQuery("from customer").list();
    
         return customers;
     }
 
-    @Transactional(propagation=Propagation.MANDATORY)
     public void add(Customer customer) {
         sessionFactory.getCurrentSession().persist(customer);
     }
 
-    @Transactional(propagation=Propagation.MANDATORY)
     public Customer get(int id) {
         return (Customer)sessionFactory.getCurrentSession().get(Customer.class, id);
     }
 
-    @Transactional(propagation=Propagation.MANDATORY)
     public void update(int customerId, Customer customer) {
         sessionFactory.getCurrentSession().update(customer);
     }
 
-    @Transactional(propagation=Propagation.MANDATORY)
+   
     public void delete(int customerId) {
         sessionFactory.getCurrentSession().delete(customerId);
     }
