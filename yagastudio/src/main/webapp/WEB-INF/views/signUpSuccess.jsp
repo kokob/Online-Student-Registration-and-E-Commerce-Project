@@ -3,8 +3,9 @@
     Created on : Oct 11, 2014, 9:50:12 PM
     Author     : kokob
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,6 +15,6 @@
     <body>
         <h1>Sign up success</h1>
         
-        <p>welcome ${customer.firstName}</p>
+        <p>welcome ${newcustomer.firstName}</p>
     </body>
 </html>

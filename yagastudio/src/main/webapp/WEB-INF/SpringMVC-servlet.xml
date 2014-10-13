@@ -12,24 +12,24 @@
        xmlns:beans="http://www.springframework.org/schema/beans"
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
-http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-          http://www.springframework.org/schema/aop 
-http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-          http://www.springframework.org/schema/context 
-http://www.springframework.org/schema/context/spring-context-4.0.xsd
-          http://www.springframework.org/schema/jms 
-http://www.springframework.org/schema/jms/spring-jms-4.0.xsd
-          http://www.springframework.org/schema/tx 
-http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-          http://www.springframework.org/schema/util 
-http://www.springframework.org/schema/util/spring-util-4.0.xsd
-         http://www.springframework.org/schema/mvc  
-http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
-         http://www.springframework.org/schema/beans 
-http://www.springframework.org/schema/beans/spring-beans.xsd
-">
+                           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/aop 
+                           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                           http://www.springframework.org/schema/jms 
+                           http://www.springframework.org/schema/jms/spring-jms-4.0.xsd
+                           http://www.springframework.org/schema/tx 
+                           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+                           http://www.springframework.org/schema/util 
+                           http://www.springframework.org/schema/util/spring-util-4.0.xsd
+                           http://www.springframework.org/schema/mvc  
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+                           http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
     
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
+    
     <context:component-scan base-package="cs425.yogastudio"/>
     
     <mvc:resources mapping="/resources/**" location="/resources/" />
@@ -92,7 +92,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="connection.pool.size">1</prop>
                 <prop key="hibernate.show_sql">true</prop>
-<!--                <prop key="hibernate.current_session_context_class">thread</prop>-->
+                <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
             </props>
         </property>
     </bean>
@@ -109,7 +109,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
         <property name="suffix" value=".jsp" />
     </bean>
     
-    <tx:annotation-driven transaction-manager="txManager" />
+<tx:annotation-driven transaction-manager="txManager" />
     
     <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="dataSource" ref="dataSource"/>

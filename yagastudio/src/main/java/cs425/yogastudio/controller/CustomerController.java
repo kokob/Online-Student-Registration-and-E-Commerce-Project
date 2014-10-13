@@ -10,6 +10,7 @@ import cs425.yogastudio.entity.Address;
 import cs425.yogastudio.entity.Customer;
 import cs425.yogastudio.service.CustomerService;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,22 +43,25 @@ public class CustomerController {
      
      @RequestMapping(value="/addCustomer", method=RequestMethod.POST)
      public String addCustomer(String firstname, String lastname, String email,
-            String username, String password, String state, String zip, String street, String city, Model model){
+            String username, String password, String state, String zip, String street, String city, Model model, HttpSession session){
          
          Customer newCustomer = new Customer(firstname, lastname, email, username, password);
          Address newAddress = new Address(state, zip, street, city);
          
          newCustomer.addAddress(newAddress);
          customerService.add(newCustomer);
-         model.addAttribute("customer", newCustomer);
-         
+         model.addAttribute("newcustomer", newCustomer);
+         session.setAttribute("newcustomer", newCustomer);
          return "redirect:/signUpSuccess";
      }
      
       @RequestMapping(value="/signUpSuccess",method=RequestMethod.GET)
-     public String goToSignUpSuccess(){
+     public String goToSignUpSuccess(Model model, HttpSession session){
          
-         return "SignUpSuccess";
+         model.addAttribute("newcustomer", session.getAttribute("newcustomer"));
+         
+         
+         return "signUpSuccess";
      }
      
     

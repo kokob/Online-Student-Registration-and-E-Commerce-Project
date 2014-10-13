@@ -32,7 +32,7 @@ public class CustomerDAO {
   @Transactional(propagation=Propagation.MANDATORY)
     public void addCustomer(Customer customer){
         
-        sessionFactory.getCurrentSession().save(customer);
+        sessionFactory.getCurrentSession().persist(customer);
         
     }
 
@@ -45,7 +45,7 @@ public class CustomerDAO {
 
     @Transactional(propagation=Propagation.MANDATORY)
     public void add(Customer customer) {
-        sessionFactory.getCurrentSession().save(customer);
+        sessionFactory.getCurrentSession().persist(customer);
     }
 
     @Transactional(propagation=Propagation.MANDATORY)
