@@ -19,14 +19,14 @@
         <fieldset>
             <form action="addProduct" method="post">
                 <div>
-                    <legend>New product adding</legend>
-                    <p>Product Name:</strong> <input name="productName" type ="text"/></p>
-                    <p>Price:</strong> <input name="price" type ="text"/></p>
-                    <p>Description:</strong> <input name="description" type ="text"/></p>
-                    <p><input type="submit" value="Add Product" /> </p>
+                    <legend>New product</legend>
+                    <label>Product Name:</label> <input name="productName" type ="text"/>
+                    <label>Price:</label> <input name="price" type ="text"/>
+                    <label>Description:</label> <input name="description" type ="text"/>
+                    <label><input type="submit" value="Add Product" /></label>
                 </div>
             </form>
-            <p><a href="index.jsp">Cancel</a></p>
+          <label><a href="index.jsp">Cancel</a></label>
         </fieldset>
     </body>
 </html>

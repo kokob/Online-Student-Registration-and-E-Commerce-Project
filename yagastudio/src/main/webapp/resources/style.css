@@ -1,7 +1,6 @@
 
 a {
-   
-     font-weight: bold;
+    font-weight: bold;
 }
 
 input[type="submit"] {    
@@ -14,12 +13,25 @@ fieldset {
     border-radius: 10px;
 }
 legend {
-	background-color: white;
-	border: 2px outset gray;
-	padding: 0.2em;
+    background-color: white;
+    border: 2px outset gray;
+    padding: 0.2em;
 }
 body {
-	background-color: #F5F5F5;
-	padding-left: 1em;
+    background-color: #F5F5F5;
+    padding-left: 1em;
 }
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: left;
+    margin-bottom: 1.2em;
+}
+input {
+
+    float: left;
+}
+
 
