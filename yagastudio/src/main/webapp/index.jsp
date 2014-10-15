@@ -10,7 +10,8 @@
     <body>
         <h1>Yoga Studio online student registration and E-Commerce</h1>
         
-        <a href="customerSignup"> Customer sign up</a>
-        <a href="facultySignup"> Faculty sign up</a>
+        <p><a href="customerSignup"> Customer sign up</a></p>
+        <p> <a href="facultySignup"> Faculty sign up</a></p>
+        <p> <a href="addProduct"> Add a Product</a></p>
     </body>
 </html>
