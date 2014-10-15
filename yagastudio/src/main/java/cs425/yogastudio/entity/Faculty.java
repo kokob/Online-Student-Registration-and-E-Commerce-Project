@@ -1,6 +1,7 @@
 package cs425.yogastudio.entity;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,8 +17,9 @@ public class Faculty {
 	private String email;
 	private String userName;
 	private String password;
+        private String gender;
 	
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
 	private List<Address> addresses;// = new ArrayList<Address>();
     @OneToMany(mappedBy = "faculty")
 	private List<Waiver> waiversToApprove;// = new ArrayList<Waiver>();
@@ -33,11 +35,12 @@ public class Faculty {
 		super();
 	}
 
-	public Faculty(String firstName, String lastName, String email,
+	public Faculty(String firstName, String lastName, String gender, String email,
 			String userName, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
+                this.gender = gender;
 		this.email = email;
 		this.userName = userName;
 		this.password = password;
@@ -62,6 +65,12 @@ public class Faculty {
 	public String getLastName() {
 		return this.lastName;
 	}
+        public void setGender(String gender){
+            this.gender = gender;
+        }
+        public String getGender(){
+            return this.gender;
+        }
 
 	public void setEmail(String email) {
 		this.email = email;
@@ -126,6 +135,13 @@ public class Faculty {
 	public void setAdvisees(ArrayList<Customer> advisees) {
 		this.advisees = advisees;
 	}
+         public void addAddress(Address address){
+        addresses.add(address);
+    }
+    
+    public void removeAddress(Address address){
+        addresses.remove(address);
+    }
 	
 	
 
