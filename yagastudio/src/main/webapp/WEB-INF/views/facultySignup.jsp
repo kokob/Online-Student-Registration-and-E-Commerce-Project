@@ -20,7 +20,9 @@
                     <legend>New faculty signup </legend>
                           <label> First Name:  </label><input type="text" name="firstname" /> 
                           <label>Last Name:  </label><input type="text" name="lastname" />                      
-                          <label>Gender:  </label><input type="checkbox" name="gender" />                      
+                          <label>Gender:  </label>
+                            <label> <input type="radio" name="gender" value= "M">Male</input> 
+                            <input type="radio" name="gender" value="F">Female</input>   </label> 
                           <label> User Name:  </label><input type="text" name="username" />                     
                           <label> Password:  </label><input type="password" name="password" />
                           <label> Email:  </label><input type="text" name="email" />
