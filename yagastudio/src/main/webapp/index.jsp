@@ -14,5 +14,7 @@
         <p><a href="customerSignup"> Customer sign up</a></p>
         <p> <a href="facultySignup"> Faculty sign up</a></p>
         <p> <a href="addProduct"> Add a Product</a></p>
+        <p> <a href="addCourse"> Add a Course</a></p>
+        
     </body>
 </html>

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 @Entity
@@ -14,8 +13,8 @@ public class Course {
 	@GeneratedValue
 	private int id;
 	private String courseName;
-	private int courseCode;
-	private double courseCredit;
+	private String courseCode;
+	private int courseCredit;
     @OneToMany
     @JoinTable(name = "Course_Prerequisite")
 	private List<Course> prerequisite;// = new ArrayList<Course>();
@@ -28,7 +27,7 @@ public class Course {
 		super();
 	}
 
-	public Course(String courseName, int courseCode, double courseCredit) {
+	public Course(String courseName, String courseCode, int courseCredit) {
 		super();
 		this.courseName = courseName;
 		this.courseCode = courseCode;
@@ -45,19 +44,19 @@ public class Course {
 		return this.courseName;
 	}
 
-	public void setCourseCode(int courseCode) {
+	public void setCourseCode(String courseCode) {
 		this.courseCode = courseCode;
 	}
 
-	public int getCourseCode() {
+	public String getCourseCode() {
 		return this.courseCode;
 	}
 
-	public void setCourseCredit(double courseCredit) {
+	public void setCourseCredit(int courseCredit) {
 		this.courseCredit = courseCredit;
 	}
 
-	public double getCourseCredit() {
+	public int getCourseCredit() {
 		return this.courseCredit;
 	}
 	
