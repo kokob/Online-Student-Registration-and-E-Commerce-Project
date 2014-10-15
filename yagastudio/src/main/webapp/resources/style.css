@@ -1,7 +1,6 @@
 
 a {
-    color: #F44;
-    text-decoration: none;
+   
      font-weight: bold;
 }
 
@@ -14,3 +13,13 @@ fieldset {
     border: 2px outset gray;
     border-radius: 10px;
 }
+legend {
+	background-color: white;
+	border: 2px outset gray;
+	padding: 0.2em;
+}
+body {
+	background-color: #F5F5F5;
+	padding-left: 1em;
+}
+
