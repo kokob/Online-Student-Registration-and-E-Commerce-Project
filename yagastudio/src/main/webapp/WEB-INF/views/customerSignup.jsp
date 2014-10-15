@@ -17,7 +17,7 @@
         <fieldset>      
             <form action="addCustomer" method="post">
                 <div>
-                    <legend>New Customer signup</legend>           
+                    <legend>New customer signup</legend>           
                     <label>First Name:</label> <input type="text" name="firstname" />                    
                     <label>Last Name:</label> <input type="text" name="lastname" />                       
                     <label>User Name:</label> <input type="text" name="username" />                        
