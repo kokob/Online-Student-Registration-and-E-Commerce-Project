@@ -41,18 +41,18 @@ public class ProductController {
        double thePrice = Double.parseDouble(price);
         Product newProduct = new Product(productName, thePrice, description);
         productService.addProduct(newProduct);
-        model.addAttribute("newProduct", newProduct);
-        session.setAttribute("newProduct", newProduct);
+        model.addAttribute("added", newProduct.getProductName());
+        session.setAttribute("added", newProduct.getProductName());
         return "redirect:/addProductSuccess";
     }
     
      @RequestMapping(value="/addProductSuccess",method=RequestMethod.GET)
      public String goToAddProductSuccess(Model model, HttpSession session){
          
-         model.addAttribute("newProduct", session.getAttribute("newProduct"));
+         model.addAttribute("added", session.getAttribute("added"));
          
          
-         return "addProductSuccess";
+         return "addSuccess";
      }
 
 }
