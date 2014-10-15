@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="resources/style.css" rel="stylesheet" type="text/css" />
-        <title>Customer Signup</title>
+        <title>Customer Signup </title>
     </head>
     <body>
         

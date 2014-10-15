@@ -5,10 +5,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Yoga Studio</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Yoga Studio online student registration and E-Commerce</h1>
         
         <a href="customerSignup"> Customer sign up</a>
         <a href="facultySignup"> Faculty sign up</a>
