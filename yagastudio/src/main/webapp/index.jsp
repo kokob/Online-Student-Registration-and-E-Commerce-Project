@@ -10,6 +10,7 @@
     <body>
         <h1>Hello World!</h1>
         
-        <a href="customerSignup"> sign up</a>
+        <a href="customerSignup"> Customer sign up</a>
+        <a href="facultySignup"> Faculty sign up</a>
     </body>
 </html>

@@ -46,6 +46,15 @@
     <bean id="customerDao" class="cs425.yogastudio.DAO.CustomerDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+     <bean id="facultyService" class="cs425.yogastudio.service.FacultyService">
+        <property name="facultyDAO" ref="facultyDao"/>
+    </bean>
+    
+    <!--DAO beans-->
+    
+    <bean id="facultyDao" class="cs425.yogastudio.DAO.FacultyDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     
     
      <!--Session Factory bean-->

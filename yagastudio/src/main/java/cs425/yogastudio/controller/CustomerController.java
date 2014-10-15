@@ -50,15 +50,15 @@ public class CustomerController {
          
          newCustomer.addAddress(newAddress);
          customerService.add(newCustomer);
-         model.addAttribute("newcustomer", newCustomer);
-         session.setAttribute("newcustomer", newCustomer);
+         //model.addAttribute("newcustomer", newCustomer);
+         session.setAttribute("added", newCustomer.getFirstName());
          return "redirect:/signUpSuccess";
      }
      
       @RequestMapping(value="/signUpSuccess",method=RequestMethod.GET)
      public String goToSignUpSuccess(Model model, HttpSession session){
          
-         model.addAttribute("newcustomer", session.getAttribute("newcustomer"));
+         model.addAttribute("added", session.getAttribute("added"));
          
          
          return "signUpSuccess";

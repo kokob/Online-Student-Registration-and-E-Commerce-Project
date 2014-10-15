@@ -42,19 +42,19 @@ public class FacultyController {
          
          newFaculty.addAddress(newAddress);
          facultyService.add(newFaculty);
-         model.addAttribute("newFaculty", newFaculty);
-         session.setAttribute("newFaculty", newFaculty);
+         //model.addAttribute("newFaculty", newFaculty);
+         session.setAttribute("added", newFaculty.getFirstName());
          return "redirect:/signUpSuccess";
      }
      
-      @RequestMapping(value="/signUpSuccess",method=RequestMethod.GET)
-     public String goToSignUpSuccess(Model model, HttpSession session){
-         
-         model.addAttribute("newFaculty", session.getAttribute("newFaculty"));
-         
-         
-         return "signUpSuccess";
-     }
+//      @RequestMapping(value="/signUpSuccess",method=RequestMethod.GET)
+//     public String goToSignUpSuccess(Model model, HttpSession session){
+//         
+//         model.addAttribute("newFaculty", session.getAttribute("newFaculty"));
+//         
+//         
+//         return "signUpSuccess";
+//     }
      
     
 }

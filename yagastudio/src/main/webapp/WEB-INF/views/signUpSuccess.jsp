@@ -15,6 +15,6 @@
     <body>
         <h1>Sign up success</h1>
         
-        <p>welcome ${newcustomer.firstName}</p>
+        <p>welcome ${added}</p>
     </body>
 </html>
