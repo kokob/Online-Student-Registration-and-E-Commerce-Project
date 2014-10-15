@@ -9,27 +9,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="resources/style.css" rel="stylesheet" type="text/css" />
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="addCourse" method="post">
-                <table>
-                    <tr>
-                        <td>Course Name: </td>
-                        <td><input type="text" name="name" /> </td>
-                    </tr>
-                    <tr>
-                        <td>Course Code: </td>
-                        <td><input type="text" name="code" /> </td>
-                    </tr>
-                    <tr>
-                        <td>Credit Hours: </td>
-                        <td><input type="text" name="credit" /> </td>
-                    </tr>
-                    
-                </table>
-                <input type="submit" value="Add Course"/>
-
+        <fieldset>
+            <form action="addCourse" method="post">
+                <div>
+                    <legend>New Course</legend>
+                    <label>Course Name:</label> <input type="text" name="name" /> 
+                    <label>Course Code:</label> <input type="text" name="code" /> 
+                    <label>Credit Hours:</label> <input type="text" name="credit"/> 
+                    <label><input type="submit" value="Add Course"/></label>
+                </div>
             </form>
+        </fieldset>
     </body>
 </html>
