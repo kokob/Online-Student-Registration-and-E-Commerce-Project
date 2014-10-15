@@ -22,7 +22,7 @@
                     <label>Last Name:</label> <input type="text" name="lastname" />                       
                     <label>User Name:</label> <input type="text" name="username" />                        
                     <label>Password:</label> <input type="password" name="password" />                        
-                    <label>email:</label> <input type="text" name="email" />                        
+                    <label>Email:</label> <input type="text" name="email" />                        
                     <label>Street:</label> <input type="text" name="street" />                       
                     <label> City:</label> <input type="text" name="city" />                       
                     <label> State: </label> <input type="text" name="state" />                       
