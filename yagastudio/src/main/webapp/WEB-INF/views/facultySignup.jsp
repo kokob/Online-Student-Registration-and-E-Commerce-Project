@@ -18,54 +18,18 @@
             <form action="addFaculty" method="post">
                 <div>
                     <legend>New faculty signup </legend>
-                    <table>
-                        <tr>
-                            <td>First Name:</td>
-                            <td><input type="text" name="firstname" /></td>
-                        </tr>
-                        <tr>
-                            <td>Last Name:</td>
-                            <td><input type="text" name="lastname" /></td>
-                        </tr>
-                        <tr>
-                            <td>Gender:</td>
-                            <td><input type="checkbox" name="gender" /></td>
-                        </tr>
-                        <tr>
-                            <td>User Name:</td>
-                            <td><input type="text" name="username" /></td>
-                        </tr>
-                        <tr>
-                            <td>Password:</td>
-                            <td><input type="password" name="password" /></td>
-                        </tr>
-                        <tr>
-                            <td>Email:</td>
-                            <td><input type="text" name="email" /></td>
-                        </tr>
-                        <tr>
-                            <td>Street:</td>
-                            <td><input type="text" name="street" /></td>
-                        </tr>
-                        <tr>
-                            <td>City: </td>
-                            <td><input type="text" name="city" /></td>
-                        </tr>
-                        <tr>
-                            <td>State:</td>
-                            <td><input type="text" name="state" /></td>
-                        </tr>
-                        <tr>
-                            <td>Zip: </td>
-                            <td><input type="text" name="zip" /></td>
-                        </tr>
-
-                    </table>
+                          <label> First Name:  <label><input type="text" name="firstname" /> 
+                          <label>Last Name:  <label><input type="text" name="lastname" />                      
+                          <label>Gender:  <label><input type="checkbox" name="gender" />                      
+                          <label> User Name:  <label><input type="text" name="username" />                     
+                          <label> Password:>  <label><input type="password" name="password" />
+                          <label> Email:  <label><input type="text" name="email" />
+                          <label>  Street:  <label><input type="text" name="street" />
+                          <label>  City:    <label><input type="text" name="city" />  
+                          <label> State:  <label> <input type="text" name="state" />
+                         <label> Zip:   <label><input type="text" name="zip" />
                     <input type="submit" value="Register" />
-
             </form>
-
-
             <p><a href="index.jsp">Cancel</a></p>
         </fieldset>
     </div>     
