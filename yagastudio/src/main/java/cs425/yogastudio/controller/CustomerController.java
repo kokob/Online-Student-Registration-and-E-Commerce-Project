@@ -8,6 +8,7 @@ package cs425.yogastudio.controller;
 
 import cs425.yogastudio.entity.Address;
 import cs425.yogastudio.entity.Customer;
+import cs425.yogastudio.entity.ShoppingCart;
 import cs425.yogastudio.service.CustomerService;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -47,9 +48,10 @@ public class CustomerController {
          
          Customer newCustomer = new Customer(firstname, lastname, email, username, password);
          Address newAddress = new Address(state, zip, street, city);
+//         ShoppingCart shoppingCart = new ShoppingCart(newCustomer);
          
          newCustomer.addAddress(newAddress);
-         customerService.add(newCustomer);
+         customerService.addCustomer(newCustomer);
          //model.addAttribute("newcustomer", newCustomer);
          session.setAttribute("added", newCustomer.getFirstName());
          return "redirect:/signUpSuccess";

@@ -37,7 +37,7 @@ public class Customer {
     private List<CourseTaken> coursesTaken;// = new ArrayList<CourseTaken>();
     @OneToMany(mappedBy = "customer")
     private List<Order> orders;// = new ArrayList<Order>();
-    @OneToOne(mappedBy = "customer")
+    @OneToOne(mappedBy = "customer" , cascade = CascadeType.ALL)
     private ShoppingCart shoppingCart;
     
     @ManyToMany(mappedBy = "waitlisted")

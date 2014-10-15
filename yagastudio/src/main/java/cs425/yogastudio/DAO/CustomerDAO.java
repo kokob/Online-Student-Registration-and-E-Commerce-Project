@@ -8,7 +8,9 @@ package cs425.yogastudio.DAO;
 
 import cs425.yogastudio.entity.Customer;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,9 +44,9 @@ public class CustomerDAO {
         return customers;
     }
 
-    public void add(Customer customer) {
-        sessionFactory.getCurrentSession().persist(customer);
-    }
+//    public void add(Customer customer) {
+//        sessionFactory.getCurrentSession().persist(customer);
+//    }
 
     public Customer get(int id) {
         return (Customer)sessionFactory.getCurrentSession().get(Customer.class, id);
@@ -57,6 +59,14 @@ public class CustomerDAO {
    
     public void delete(int customerId) {
         sessionFactory.getCurrentSession().delete(customerId);
+    }
+    
+    public Customer findCustomerByName(String firstName){
+        
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
+        criteria.add(Restrictions.eq("firstName", firstName));
+    
+        return (Customer) criteria.uniqueResult();
     }
     
     
