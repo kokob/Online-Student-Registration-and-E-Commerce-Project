@@ -52,7 +52,7 @@
     <bean id="customerDao" class="cs425.yogastudio.DAO.CustomerDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    
+
     <bean id="facultyDao" class="cs425.yogastudio.DAO.FacultyDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
