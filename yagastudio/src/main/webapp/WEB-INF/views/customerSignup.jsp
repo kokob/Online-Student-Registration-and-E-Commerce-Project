@@ -27,11 +27,11 @@
                     <label> City:</label> <input type="text" name="city" />                       
                     <label> State: </label> <input type="text" name="state" />                       
                     <label> Zip:</label> <input type="text" name="zip" />              
-                    <input type="submit" value="Register" />
+                    <label><input type="submit" value="Register" /></label>
                 </div>
 
             </form>
-            <p><a href="index.jsp">Cancel</a></p>
+            <label><a href="index.jsp">Cancel</a><label>
         </fieldset>     
     </div>     
 </body>

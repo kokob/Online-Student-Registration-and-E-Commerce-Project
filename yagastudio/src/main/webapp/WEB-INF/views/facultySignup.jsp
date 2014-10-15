@@ -30,7 +30,7 @@
                          <label> Zip:   <label><input type="text" name="zip" />
                     <input type="submit" value="Register" />
             </form>
-            <p><a href="index.jsp">Cancel</a></p>
+            <label><a href="index.jsp">Cancel</a></label>
         </fieldset>
     </div>     
 </body>
