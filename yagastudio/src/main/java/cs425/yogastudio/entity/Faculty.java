@@ -1,22 +1,35 @@
 package cs425.yogastudio.entity;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
 @Entity
-public class Faculty {
-	@Id
-	@GeneratedValue
-	private int id;
+@Table(name="FACULTY")
+//@AttributeOverrides({
+//    @AttributeOverride(name="userName", column=@Column(name="USERNAME")),
+//    @AttributeOverride(name="passWord", column=@Column(name="PASSWORD"))
+//})
+
+@PrimaryKeyJoinColumn(name="USER_ID")
+public class Faculty extends User {
+//	@Id
+//	@GeneratedValue
+//	private int id;
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String userName;
-	private String password;
+//	private String userName;
+//	private String password;
         private String gender;
 	
     @OneToMany(cascade = CascadeType.ALL)
@@ -37,13 +50,13 @@ public class Faculty {
 
 	public Faculty(String firstName, String lastName, String gender, String email,
 			String userName, String password) {
-		super();
+		super(userName, password);
 		this.firstName = firstName;
 		this.lastName = lastName;
                 this.gender = gender;
 		this.email = email;
-		this.userName = userName;
-		this.password = password;
+//		this.userName = userName;
+//		this.password = password;
 		this.addresses = new ArrayList<Address>();
 		this.waiversToApprove = new ArrayList<Waiver>();
 		this.sectionsToTeach = new ArrayList<Section>();
@@ -80,29 +93,29 @@ public class Faculty {
 		return this.email;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+//	public void setUserName(String userName) {
+//		this.userName = userName;
+//	}
+//
+//	public String getUserName() {
+//		return this.userName;
+//	}
+//
+//	public void setPassword(String password) {
+//		this.password = password;
+//	}
+//
+//	public String getPassword() {
+//		return this.password;
+//	}
 
-	public String getUserName() {
-		return this.userName;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getPassword() {
-		return this.password;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+//	public int getId() {
+//		return id;
+//	}
+//
+//	public void setId(int id) {
+//		this.id = id;
+//	}
 
 	public List<Address> getAddresses() {
 		return addresses;

@@ -2,27 +2,42 @@ package cs425.yogastudio.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
 
 @Entity
-public class Customer {
+@Table(name="CUSTOMER")
+//@AttributeOverrides({
+//    @AttributeOverride(name="userName", column=@Column(name="USERNAME")),
+//    @AttributeOverride(name="passWord", column=@Column(name="PASSWORD"))
+//})
 
-    @Id
-    @GeneratedValue
-    private int id;
+@PrimaryKeyJoinColumn(name="USER_ID")
+
+public class Customer extends User {
+
+//    @Id
+
+//    @GeneratedValue
+//    private int id;
     private String firstName;
     private String lastName;
     private String email;
-    private String userName;
-    private String password;
+//    private String userName;
+//    private String password;
 
     private boolean isEnrolled;
     @ManyToMany
@@ -49,12 +64,13 @@ public class Customer {
 
     public Customer(String firstName, String lastName, String email,
             String userName, String password) {
-        super();
+        super(userName, password);
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.userName = userName;
-        this.password = password;
+//        this.userName = userName;
+//        this.password = password;
         this.isEnrolled = false;
         this.sectionsEnrolled = new ArrayList<Section>();
         this.advisor = null;
@@ -90,21 +106,32 @@ public class Customer {
         return this.email;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+//    public void setUserName(String userName) {
+//        this.userName = userName;
+//    }
+//
 
-    public String getUserName() {
-        return this.userName;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    public String getUserName() {
+//        return this.userName;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
+//
+//    public String getPassword() {
+//        return this.password;
+//    }
 
-    public String getPassword() {
-        return this.password;
-    }
+
+
+
+
+
+
+
+
 
     public void setIsEnrolled(boolean isEnrolled) {
         this.isEnrolled = isEnrolled;
@@ -114,13 +141,18 @@ public class Customer {
         return this.isEnrolled;
     }
 
-    public int getId() {
-        return id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
+
+
+
 
     public Faculty getAdvisor() {
         return advisor;
