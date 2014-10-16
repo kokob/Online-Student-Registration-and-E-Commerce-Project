@@ -19,7 +19,7 @@ public class Course {
     @OneToMany
     @JoinTable(name = "Course_Prerequisite")
 	private List<Course> prerequisite;// = new ArrayList<Course>();
-    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
 	private List<Section> sections;// = new ArrayList<Section>();
 	
 	

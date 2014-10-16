@@ -14,6 +14,26 @@
     <beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" /> 
     
     <http pattern="views/home.jsp" security="none" />
+     
+    <http use-expressions="true">
+        
+        <intercept-url pattern="/**" access="isAuthenticated()"/>
+        <form-login/>
+        <logout logout-url="/logout" logout-success-url="/index" />
+    
+    </http>
+    
+    <authentication-manager>
+        <authentication-provider>
+            <password-encoder hash="plaintext" />
+            <user-service>
+                <user name="bereket" password="2222" authorities="ROLE_USER" />
+                <user name="kokob" password="3333" authorities="ROLE_USER" />
+                <user name="kalu" password="1111" authorities="ROLE_USER, ROLE_ADMIN" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+ 
 
 
 </beans:beans>

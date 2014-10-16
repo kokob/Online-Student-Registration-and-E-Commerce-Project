@@ -54,5 +54,12 @@ public class ProductController {
          
          return "addSuccess";
      }
+     
+     @RequestMapping(value="/products", method=RequestMethod.GET)
+	public String getAll(Model model) {
+		model.addAttribute("products", productService.getAll());
+               
+		return "productList";
+	}
 
 }
