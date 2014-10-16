@@ -9,12 +9,16 @@
         <title>Yoga Studio</title>
     </head>
     <body>
+       
         <h1>Yoga Studio online student registration and E-Commerce</h1>
         
         <p><a href="customerSignup"> Customer sign up</a></p>
         <p> <a href="facultySignup"> Faculty sign up</a></p>
         <p> <a href="addProduct"> Add a Product</a></p>
         <p> <a href="addCourse"> Add a Course</a></p>
+        <p> <a href="products"> List of products</a></p>
+         <p> <a href="courses"> List of courses</a></p>
         
+         
     </body>
 </html>

@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -46,5 +47,23 @@ public class CourseController {
         model.addAttribute("added", session.getAttribute("added"));
         return "addCourse";
     }
-    
+      @RequestMapping(value="/courses", method=RequestMethod.GET)
+	public String getAll(Model model) {
+		model.addAttribute("courses", courseService.getAll());
+               
+		return "courseList";
+	}
+        
+        @RequestMapping(value="/course/{id}", method=RequestMethod.GET)
+	public String update(Model model, @PathVariable int id) {
+		model.addAttribute("course", courseService.get(id)); // course.id already set by binding
+                
+		return "courseUpdateDelete";
+	}
+	
+	@RequestMapping(value="/course/delete", method=RequestMethod.POST)
+	public String delete(int courseID) {
+		courseService.delete(courseID);
+		return "redirect:/course";
+	}
 }

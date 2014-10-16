@@ -33,7 +33,7 @@ public class ProductDAO {
     }
 
     public List<Product> getAll() {
-        List<Product> products = sessionFactory.getCurrentSession().createQuery("from product").list();
+        List<Product> products = sessionFactory.getCurrentSession().createQuery("from Product").list();
 
         return products;
     }
