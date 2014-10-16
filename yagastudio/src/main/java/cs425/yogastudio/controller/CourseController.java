@@ -9,6 +9,7 @@ package cs425.yogastudio.controller;
 import cs425.yogastudio.entity.Course;
 import cs425.yogastudio.service.CourseService;
 import static java.lang.Integer.parseInt;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -66,4 +67,27 @@ public class CourseController {
 		courseService.delete(courseID);
 		return "redirect:/course";
 	}
-}
+        @RequestMapping(value="/viewCourses",method=RequestMethod.GET)
+     public String goViewCourses(Model model, HttpSession session){
+         List<Course> allCourses = courseService.getAll();
+        
+         //model.addAttribute("currentCourse", session.getAttribute("currentReader"));
+         model.addAttribute("courses", allCourses);
+        
+         return "viewCourses";
+     }
+     
+     @RequestMapping(value="/courses/{id}",method=RequestMethod.GET)
+     public String getArticles(@PathVariable int id ,Model model,HttpSession session){
+         session.setAttribute("currentCourse", courseService.get(id));        
+         model.addAttribute("currentCourse", session.getAttribute("currentCourse"));
+         
+//         List<Comment> comments = ((Article)session.getAttribute("currentArticle")).getComments();
+//         model.addAttribute("comments", comments);
+//             
+         
+         return "courseDetail";
+     }
+     
+   }
+

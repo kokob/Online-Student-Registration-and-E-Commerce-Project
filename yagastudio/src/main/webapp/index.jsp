@@ -17,6 +17,7 @@
         <p> <a href="addProduct"> Add a Product</a></p>
         <p> <a href="addCourse"> Add a Course</a></p>
         <p> <a href="products"> List of products</a></p>
+        <p> <a href="viewCourses"> View all Courses</a></p>
          <p> <a href="courses"> List of courses</a></p>
         
          
