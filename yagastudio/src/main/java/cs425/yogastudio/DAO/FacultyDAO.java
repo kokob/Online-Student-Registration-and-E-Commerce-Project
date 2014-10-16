@@ -30,7 +30,7 @@ public class FacultyDAO {
     }
 
     public List<Faculty> getAll() {
-        List<Faculty> faculties = sessionFactory.getCurrentSession().createQuery("from faculty").list();
+        List<Faculty> faculties = sessionFactory.getCurrentSession().createQuery("from Faculty").list();
    
         return faculties;
     }

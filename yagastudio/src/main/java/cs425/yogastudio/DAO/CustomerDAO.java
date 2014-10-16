@@ -39,7 +39,7 @@ public class CustomerDAO {
     }
 
     public List<Customer> getAll() {
-        List<Customer> customers = sessionFactory.getCurrentSession().createQuery("from customer").list();
+        List<Customer> customers = sessionFactory.getCurrentSession().createQuery("from Customer").list();
    
         return customers;
     }

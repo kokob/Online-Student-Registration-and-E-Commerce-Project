@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -18,7 +19,7 @@ public class Course {
     @OneToMany
     @JoinTable(name = "Course_Prerequisite")
 	private List<Course> prerequisite;// = new ArrayList<Course>();
-    @OneToMany(mappedBy = "course")
+	@OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
 	private List<Section> sections;// = new ArrayList<Section>();
 	
 	

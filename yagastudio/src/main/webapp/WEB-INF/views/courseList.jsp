@@ -19,7 +19,8 @@
 	<c:forEach var="course" items="${courses}">
 	<fieldset>
             <ul>
-		<li>course name: ${course.courseName}</li>
+                <p><strong>${course.courseName}</strong></p>
+              
 		<li>course code: ${course.courseCode}</li>
 		<li>course credit:${course.courseCredit}</li>		
 		<a href="course/${course.id}">edit</a>
