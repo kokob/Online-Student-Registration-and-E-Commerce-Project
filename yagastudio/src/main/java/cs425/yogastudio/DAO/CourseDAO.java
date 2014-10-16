@@ -35,7 +35,7 @@ public class CourseDAO {
     }
 
     public List<Course> getAll() {
-        List<Course> courses = sessionFactory.getCurrentSession().createQuery("from course").list();
+        List<Course> courses = sessionFactory.getCurrentSession().createQuery("from Course").list();
 
         return courses;
     }

@@ -15,6 +15,8 @@
         <p> <a href="facultySignup"> Faculty sign up</a></p>
         <p> <a href="addProduct"> Add a Product</a></p>
         <p> <a href="addCourse"> Add a Course</a></p>
+        <p> <a href="createSection"> Add a Section</a></p>
+        <p> <a href="viewCourses"> View all Courses</a></p>
         
     </body>
 </html>
