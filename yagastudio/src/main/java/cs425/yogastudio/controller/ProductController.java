@@ -5,10 +5,14 @@
  */
 package cs425.yogastudio.controller;
 
+import cs425.yogastudio.entity.Customer;
 import cs425.yogastudio.entity.Product;
 import cs425.yogastudio.service.ProductService;
+import cs425.yogastudio.service.UserService;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,14 +29,17 @@ public class ProductController {
 //    }
      @Resource
     private ProductService productService;
+      @Resource
+    private UserService userService;
 
     public void setProductService(ProductService productService) {
         this.productService = productService;
     }
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.GET)
-    public String goToaddProduct() {
-
+    public String goToaddProduct(HttpSession session, Model model) {
+ model.addAttribute("currentCustomer",  session.getAttribute("currentCustomer"));
+       
         return "addProduct";
     }
 
@@ -50,7 +57,14 @@ public class ProductController {
      public String goToAddProductSuccess(Model model, HttpSession session){
          
          model.addAttribute("added", session.getAttribute("added"));
-         
+          UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+           
+           Customer c1 =(Customer)userService.findCustomerByUserName(userDetails.getUsername());
+          // Customer c1 = new Customer(userDetails.getUsername(), "wel", "myEmail@yahoo.com", "kobi", "kobipass");
+           session.setAttribute("currentCustomer", c1);
+                   
+           model.addAttribute("currentCustomer", session.getAttribute("currentCustomer"));
+                  
          
          return "addSuccess";
      }

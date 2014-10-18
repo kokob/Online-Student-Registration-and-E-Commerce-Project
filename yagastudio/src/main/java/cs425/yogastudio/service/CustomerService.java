@@ -7,7 +7,9 @@
 package cs425.yogastudio.service;
 
 import cs425.yogastudio.DAO.CustomerDAO;
+import cs425.yogastudio.DAO.RoleDAO;
 import cs425.yogastudio.entity.Customer;
+import cs425.yogastudio.entity.Role;
 import java.util.List;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,7 @@ public class CustomerService {
     public CustomerService() {
     }
     
+     private RoleDAO roleDAO;
     
     private CustomerDAO customerDAO;
 
@@ -30,7 +33,15 @@ public class CustomerService {
    public void setCustomerDAO(CustomerDAO customerDAO) {
         this.customerDAO = customerDAO;
     }
-  
+
+   
+   
+   @Transactional(propagation=Propagation.SUPPORTS)
+    public void setRoleDAO(RoleDAO roleDAO) {
+        this.roleDAO = roleDAO;
+    }
+   
+     
     public List<Customer> getAll() {
 
         return customerDAO.getAll();
@@ -38,6 +49,8 @@ public class CustomerService {
 
     public void addCustomer(Customer customer) {
 
+        Role roleCustomer = roleDAO.getRoleByRoleName("ROLE_CUSTOMER");
+        customer.getRoles().add(roleCustomer);
         customerDAO.addCustomer(customer);
     }
 

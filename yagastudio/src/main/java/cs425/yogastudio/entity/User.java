@@ -8,7 +8,9 @@ package cs425.yogastudio.entity;
 //
 ///**
 
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,11 +40,11 @@ public class User {
     @Column(name = "PASSWORD")
     private String passWord;
     
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name="UsersAndRoles",
             joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns=@JoinColumn(name="role_id"))
-    private List<Role> roles;
+   private List<Role> roles = new ArrayList<Role>();
    
 
     public User() {
