@@ -15,5 +15,25 @@
         <div id="header">
         <p>Yoga Studio online student registration and E-Commerce</p>
         </div>
+        
+<ul id="menu-bar">
+ <li class="active"><a href="#">Home</a></li>
+ <li><a href="#">Customers</a>
+  <ul>
+   <li><a href="#">Customers Sub Menu 1</a></li>
+   <li><a href="#">Customers Sub Menu 2</a></li>
+  
+  </ul>
+ </li>
+ <li><a href="#">Products</a>
+  <ul>
+   <li><a href="#">Products Sub Menu 1</a></li>
+   <li><a href="#">Products Sub Menu 2</a></li>
+   
+  </ul>
+ </li>
+ <li><a href="about.jsp">About</a></li>
+ <li><a href="#">Contact Us</a></li>
+</ul>
     </body>
 </html>
