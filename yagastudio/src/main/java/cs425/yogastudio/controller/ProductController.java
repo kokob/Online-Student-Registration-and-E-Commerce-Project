@@ -61,5 +61,13 @@ public class ProductController {
                
 		return "productList";
 	}
+        
+        @RequestMapping(value="/product/delete", method=RequestMethod.POST)
+	public String deleteProduct(int productId) {
+            
+                Product p1=productService.get(productId);
+		productService.delete(p1);
+		return "redirect:/products";
+	}
 
 }

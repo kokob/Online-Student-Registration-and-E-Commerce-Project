@@ -1,6 +1,6 @@
 <%-- 
-    Document   : courseList
-    Created on : Oct 15, 2014, 9:28:17 PM
+    Document   : facultiesList
+    Created on : Oct 17, 2014, 5:43:02 PM
     Author     : zeriet
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -14,23 +14,23 @@
     </head>
     <body>
 
-        <h1>List of courses</h1>
+        <h1>List of faculties</h1>
         <fieldset>
-            <c:forEach var="course" items="${courses}">
+            <c:forEach var="faculty" items="${faculties}">
                 <fieldset>
                     <ul>
-                        <p><strong>${course.courseName}</strong></p>              
-                        <li>course code: ${course.courseCode}</li>
-                        <li>course credit:${course.courseCredit}</li>		
-                        <a href="course/${course.id}">edit</a>
-                        <form action="course/delete?courseId=${course.id}" method="post">
+                      
+                        <li>First Name${faculty.firstName}</strong></li>              
+                        <li>Last Name: ${faculty.lastName}</li>
+                        <li>Email:${faculty.email}</li>
+                        
+                        <a href="faculty/${faculty.id}">edit</a>
+                        <form action="faculty/delete?facultyId=${faculty.id}" method="post">
                             <button type="submit">Delete</button>
                         </form>
                     </ul>
                 </fieldset>
             </c:forEach>
         </fieldset>
-
-        <!--	<a href="addCar.html"> Add a Car</a>-->
     </body>
 </html>

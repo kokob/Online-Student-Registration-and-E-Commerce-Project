@@ -1,6 +1,11 @@
 
 a {
-    font-weight: bold;
+    padding: 5px 5px;
+    background: #4479BA;
+    color: #FFF;
+    margin: 20px;
+    border-radius: 5px;
+    text-decoration: none;
 }
 
 input[type="submit"] {    
@@ -11,7 +16,8 @@ fieldset {
     background-color: #E0E0FF;
     border: 2px outset gray;
     border-radius: 10px;
-   
+    display:inline-block
+
 }
 legend {
     background-color: white;
@@ -19,9 +25,18 @@ legend {
     padding: 0.2em;
 }
 body {
-    background-color: #F5F5F5;
-    padding-left: 1em;
+    background-color:	#D1FFD1;
+    display: block;
 }
+div#body {
+    margin-top: 120px;
+}
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
 label{
     display: inline-block;
     float: left;
@@ -31,8 +46,77 @@ label{
     margin-bottom: 1.2em;
 }
 input {
-
     float: left;
 }
 
+#header {
+    background:#90a090;
+    border:0;
 
+    height: 70px;
+    margin-bottom: 25px;  
+    border: 2px solid #666;
+
+}
+
+#header .logo {
+    float:left;
+    top:0px;
+}
+
+#header p {
+    margin:0;
+    font-size: 30px;
+}
+
+
+#header, #footer {
+
+    float:left;
+    padding:10px 0;
+    min-width:100%;
+}
+div#header {
+    position: fixed;
+    /* width: 100%; */
+    top: 0;
+}
+
+
+#footer {
+    position:fixed;
+    background:#90a090;
+    text-align:center;		
+    bottom:0px;
+    width:100%
+}
+
+#container {
+    min-height:100%;
+    position:relative;
+}
+
+div {
+    display: block;
+}
+
+
+a:visited {
+    color: black;
+}
+
+
+a:hover {
+    color: blue;
+}
+
+ul, li {
+    list-style: none;
+    list-style-type: none;
+
+}
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#669;background-color:#e8edff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#039;background-color:#b9c9fe;}
+.tg .tg-hv32{font-weight:bold;font-size:12px;font-family:"Lucida Console", Monaco, monospace !important;;background-color:#efefef}
+.tg .tg-bsv2{background-color:#efefef}

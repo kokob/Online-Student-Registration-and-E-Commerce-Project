@@ -1,11 +1,12 @@
 <%-- 
-    Document   : courseList
-    Created on : Oct 15, 2014, 9:28:17 PM
+    Document   : sectionList
+    Created on : Oct 17, 2014, 5:31:15 PM
     Author     : zeriet
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,16 +15,16 @@
     </head>
     <body>
 
-        <h1>List of courses</h1>
+        <h1>List of Sections</h1>
         <fieldset>
-            <c:forEach var="course" items="${courses}">
+            <c:forEach var="section" items="${sections}">
                 <fieldset>
                     <ul>
-                        <p><strong>${course.courseName}</strong></p>              
-                        <li>course code: ${course.courseCode}</li>
-                        <li>course credit:${course.courseCredit}</li>		
-                        <a href="course/${course.id}">edit</a>
-                        <form action="course/delete?courseId=${course.id}" method="post">
+                        <li><strong>${section.section.sectionName}</strong></li>              
+                        <li>section code: ${section.sectionCode}</li>
+                        <li>section credit:${section.sectionCredit}</li>		
+                        <a href="section/${section.id}">edit</a>
+                        <form action="section/delete?sectionId=${section.id}" method="post">
                             <button type="submit">Delete</button>
                         </form>
                     </ul>

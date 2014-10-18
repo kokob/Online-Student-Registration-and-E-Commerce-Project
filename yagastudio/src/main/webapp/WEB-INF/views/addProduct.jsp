@@ -16,6 +16,7 @@
 
     </head>
     <body>
+        
         <fieldset>
             <form action="addProduct" method="post">
                 <div>

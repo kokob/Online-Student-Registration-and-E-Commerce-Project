@@ -48,8 +48,8 @@ public class FacultyDAO {
     }
 
    
-    public void delete(int facultyId) {
-        sessionFactory.getCurrentSession().delete(facultyId);
+    public void delete(Faculty faculty) {
+        sessionFactory.getCurrentSession().delete(faculty);
     }
     
     

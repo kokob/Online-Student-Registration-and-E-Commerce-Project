@@ -60,11 +60,15 @@ public class CustomerController {
       @RequestMapping(value="/signUpSuccess",method=RequestMethod.GET)
      public String goToSignUpSuccess(Model model, HttpSession session){
          
-         model.addAttribute("added", session.getAttribute("added"));
-         
+         model.addAttribute("added", session.getAttribute("added"));      
          
          return "signUpSuccess";
      }
      
+      @RequestMapping(value = "/customers", method = RequestMethod.GET)
+    public String getAll(Model model) {
+        model.addAttribute("customers", customerService.getAll());
+        return "customerList";
+    }
     
 }

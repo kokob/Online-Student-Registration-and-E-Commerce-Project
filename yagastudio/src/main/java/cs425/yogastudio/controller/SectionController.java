@@ -47,4 +47,11 @@ public class SectionController {
         return "redirect:/createSection";
     }
     
+    @RequestMapping(value = "/sections", method = RequestMethod.GET)
+    public String getAll(Model model) {
+        model.addAttribute("sections", sectionService.getAll());
+
+        return "sectionList";
+    }
+    
 }

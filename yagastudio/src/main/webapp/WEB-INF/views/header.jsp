@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>This is Header</h1>
+        <div id="header">
+        <p>Yoga Studio online student registration and E-Commerce</p>
+        </div>
     </body>
 </html>
