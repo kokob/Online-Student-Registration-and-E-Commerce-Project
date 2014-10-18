@@ -3,6 +3,7 @@
     Created on : Oct 14, 2014, 1:41:07 PM
     Author     : b
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,6 +24,8 @@
                     <label><input type="submit" value="Add Course"/></label>
                 </div>
             </form>
+           <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+            <label><a href="index.jsp">Cancel</a></label>
         </fieldset>
     </body>
 </html>

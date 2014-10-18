@@ -38,6 +38,8 @@
                 <p> <a href="registerForCourse">Register</a> &nbsp;
                     <a href="applyForWaiver"> Apply For Waiver</a></p>
             </form>
+          <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+            <label><a href="index.jsp">Cancel</a></label>
 
 
     </body>

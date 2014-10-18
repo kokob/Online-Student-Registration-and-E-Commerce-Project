@@ -30,8 +30,8 @@
                     <th class="tg-hv32">${customer.firstName}</th>
                     <th class="tg-bsv2">${customer.lastName}</th>
                     <th class="tg-bsv2">${customer.email}</th>
-                    <th class="tg-bsv2"> <a href="faculty/${customer.id}">edit</a>
-                <form action="faculty/delete?facultyId=${customer.id}" method="post">
+                    <th class="tg-bsv2"> <a href="customer/${customer.id}">edit</a>
+                <form action="customer/delete?customerId=${customer.id}" method="post">
                     <button type="submit">Delete</button>
                 </form></th>
         </tr>

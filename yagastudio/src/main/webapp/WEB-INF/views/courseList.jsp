@@ -31,6 +31,9 @@
             </c:forEach>
         </fieldset>
 
+     <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+        <label><a href="index.jsp">Cancel</a></label>
+   
         <!--	<a href="addCar.html"> Add a Car</a>-->
     </body>
 </html>

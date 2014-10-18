@@ -16,5 +16,6 @@
     <body>
        <h1>Add product success</h1>        
         <p>${newProduct.productName} added to database</p>
+       <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
     </body>
 </html>

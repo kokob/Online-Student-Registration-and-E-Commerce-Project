@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -69,6 +70,27 @@ public class CustomerController {
     public String getAll(Model model) {
         model.addAttribute("customers", customerService.getAll());
         return "customerList";
+    }
+      @RequestMapping(value = "/customer/{id}", method = RequestMethod.GET)
+    public String update(Model model, @PathVariable int id, HttpSession session) {
+        session.setAttribute("customer", customerService.get(id));
+        model.addAttribute("customer", customerService.get(id)); // 
+        
+        return "customerUpdate";
+    }
+    
+     @RequestMapping(value="/customer/{id}", method=RequestMethod.POST)
+	public String updateCustomer(@PathVariable int id, HttpSession session) {            
+		customerService.update(id, (Customer)session.getAttribute("customer"));
+		return "redirect:/customers";
+	}
+        
+          @RequestMapping(value = "/customer/delete", method = RequestMethod.POST)
+    public String deleteFaculty(int customerId) {
+
+//        Customer c1 = customerService.get(customerId);
+        customerService.delete(customerId);
+        return "redirect:/customers";
     }
     
 }

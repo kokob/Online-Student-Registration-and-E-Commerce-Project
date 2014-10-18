@@ -66,7 +66,7 @@ public class CourseController {
         session.setAttribute("course", courseService.get(id));
         model.addAttribute("course", courseService.get(id)); // course.id already set by binding
         
-        return "courseUpdateDelete";
+        return "courseUpdate";
     }
     @RequestMapping(value="/course/{id}", method=RequestMethod.POST)
 	public String updateCourse(@PathVariable int id, HttpSession session) {            

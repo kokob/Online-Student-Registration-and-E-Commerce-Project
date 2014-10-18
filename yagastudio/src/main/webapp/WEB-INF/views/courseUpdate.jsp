@@ -16,14 +16,14 @@
         <fieldset>
             <form action="../course/${course.id}" method="post">      
                 <div>              	
-                    <legend>New Course</legend>
+                    <legend>Update Course</legend>
                     <label>Course Name:</label> <input type="text" name="name" value="${course.courseName}" /> 
                     <label>Course Code:</label> <input type="text" name="code" value="${course.courseCode}" /> 
                     <label>Credit Hours:</label> <input type="text" name="credit" value="${course.courseCredit}"/> 
                     <label><input type="submit" value="update"/> </label>
                 </div>
+            </form>
         </fieldset>
-    </form>
-  
-</body>
+
+    </body>
 </html>
