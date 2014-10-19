@@ -38,7 +38,7 @@ public class ProductController {
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.GET)
     public String goToaddProduct(HttpSession session, Model model) {
- model.addAttribute("currentCustomer",  session.getAttribute("currentCustomer"));
+    model.addAttribute("currentCustomer",  session.getAttribute("currentCustomer"));
        
         return "addProduct";
     }

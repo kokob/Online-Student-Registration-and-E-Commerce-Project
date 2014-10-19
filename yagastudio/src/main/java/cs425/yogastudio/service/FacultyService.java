@@ -39,7 +39,9 @@ public class FacultyService {
 
     public void add(Faculty faculty) {
         Role roleFaculty = roleDAO.getRoleByRoleName("ROLE_FACULTY");
+//        Role roleAdmin = roleDAO.getRoleByRoleName("ROLE_ADMIN");
         faculty.getRoles().add(roleFaculty);
+//        faculty.getRoles().add(roleAdmin);
         facultyDAO.add(faculty);
     }
 
