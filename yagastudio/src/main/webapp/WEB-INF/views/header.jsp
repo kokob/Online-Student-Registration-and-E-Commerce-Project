@@ -36,11 +36,11 @@
             <li><a href="about.jsp">About</a></li>
             <li><a href="#">Contact Us</a></li>
             <li>  <sec:authorize access="isAnonymous()">
-                    <p> <a href="login.jsp"> Log in</a></p>    
+                   <a href="login.jsp"> Log in</a>    
                 </sec:authorize>  
 
              <sec:authorize access="isAuthenticated()">
-                    <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+                 <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
                 </sec:authorize></li>
 
         </ul>

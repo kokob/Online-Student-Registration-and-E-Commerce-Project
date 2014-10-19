@@ -5,8 +5,10 @@
  */
 package cs425.yogastudio.controller;
 
+import cs425.yogastudio.entity.Admin;
 import cs425.yogastudio.entity.Customer;
 import cs425.yogastudio.entity.Product;
+import cs425.yogastudio.service.AdminService;
 import cs425.yogastudio.service.ProductService;
 import cs425.yogastudio.service.UserService;
 import javax.annotation.Resource;
@@ -30,7 +32,7 @@ public class ProductController {
      @Resource
     private ProductService productService;
       @Resource
-    private UserService userService;
+    private AdminService adminService;
 
     public void setProductService(ProductService productService) {
         this.productService = productService;
@@ -39,6 +41,12 @@ public class ProductController {
     @RequestMapping(value = "/addProduct", method = RequestMethod.GET)
     public String goToaddProduct(HttpSession session, Model model) {
     model.addAttribute("currentCustomer",  session.getAttribute("currentCustomer"));
+    
+           UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+           
+           Admin a1 =(Admin)adminService.findAdminByUserName(userDetails.getUsername());
+           session.setAttribute("currentAdmin", a1);
+           model.addAttribute("currentAdmin",  session.getAttribute("currenAdmin"));
        
         return "addProduct";
     }
@@ -57,13 +65,13 @@ public class ProductController {
      public String goToAddProductSuccess(Model model, HttpSession session){
          
          model.addAttribute("added", session.getAttribute("added"));
-          UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-           
-           Customer c1 =(Customer)userService.findCustomerByUserName(userDetails.getUsername());
-          // Customer c1 = new Customer(userDetails.getUsername(), "wel", "myEmail@yahoo.com", "kobi", "kobipass");
-           session.setAttribute("currentCustomer", c1);
+//          UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//           
+//           Admin a1 =(Admin)adminService.findAdminByUserName(userDetails.getUsername());
+//          // Customer c1 = new Customer(userDetails.getUsername(), "wel", "myEmail@yahoo.com", "kobi", "kobipass");
+//           session.setAttribute("currenAdmin", a1);
                    
-           model.addAttribute("currentCustomer", session.getAttribute("currentCustomer"));
+           model.addAttribute("currentAdmin", session.getAttribute("currentAdmin"));
                   
          
          return "addSuccess";

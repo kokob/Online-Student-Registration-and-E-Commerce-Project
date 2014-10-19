@@ -5,6 +5,9 @@
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter" %>
+<%@ page import="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter" %>
+<%@ page import="org.springframework.security.core.AuthenticationException" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +15,17 @@
         <link href="resources/style.css" rel="stylesheet" type="text/css" />
         <title>login Page</title>
     </head>
-    <body>
+    <div id="container">
+        <body>
+            <div id="body">
+                <jsp:include page="/WEB-INF/views/header.jsp"/> 
+
+                <c:if test="${not empty param.login_error}">
+                    <font color="red">
+                    Your login attempt was not successful, try again.<br/><br/>
+                    Reason: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+                    </font>
+                </c:if>
                 <form name='form' action="j_spring_security_check" method='POST'>
                     <table>
                         <tr>
@@ -28,6 +41,8 @@
                         </tr>
                     </table>
                 </form>
-
-    </body>
+            </div>
+        </body>
+        <jsp:include page="/WEB-INF/views/footer.jsp"/> 
+    </div>
 </html>

@@ -20,7 +20,7 @@
     </head>
     <body>
         
-    <p>Add Product for mr. ${currentCustomer.lastName}</p>
+    <p>Add Product for mr. ${currentAdmin.lastName}</p>
         <fieldset>
             <form action="addProduct" method="post">
                 <div>

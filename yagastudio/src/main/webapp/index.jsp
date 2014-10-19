@@ -30,6 +30,8 @@
                 <p> <a href="addCourse"> Add a Course</a></p>
                 <p> <a href="createSection"> Add a Section</a></p>
                 
+                <p> <a href="adminSignup"> Add Admin</a></p>
+                
                 <sec:authorize access="isAnonymous()">
                 <p> <a href="login.jsp"> Log in</a></p>    
                 </sec:authorize>     

@@ -46,8 +46,14 @@
     </bean>
      <bean id="facultyService" class="cs425.yogastudio.service.FacultyService">
         <property name="facultyDAO" ref="facultyDao"/>
-  <property name="roleDAO" ref="roleDao"/> 
+        <property name="roleDAO" ref="roleDao"/> 
     </bean>
+    
+    <bean id="adminService" class="cs425.yogastudio.service.AdminService">
+        <property name="adminDAO" ref="adminDao"/>
+        <property name="roleDAO" ref="roleDao"/> 
+    </bean>
+    
     <bean id="courseService" class="cs425.yogastudio.service.CourseService">
         <property name="courseDAO" ref="courseDao"/>
     </bean>
@@ -71,6 +77,10 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean id="adminDao" class="cs425.yogastudio.DAO.AdminDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
      <bean id="productDao" class="cs425.yogastudio.DAO.ProductDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
@@ -81,7 +91,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
-  <bean id="roleDao" class="cs425.yogastudio.DAO.RoleDAO">
+    <bean id="roleDao" class="cs425.yogastudio.DAO.RoleDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 	  <bean id="userDao" class="cs425.yogastudio.DAO.UserDAO">
