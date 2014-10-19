@@ -9,14 +9,29 @@ import cs425.yogastudio.entity.Customer;
 import cs425.yogastudio.entity.Product;
 import cs425.yogastudio.service.ProductService;
 import cs425.yogastudio.service.UserService;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.sql.Blob;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import org.hibernate.Hibernate;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import java.sql.Blob;
+import java.sql.SQLException;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.rowset.serial.SerialBlob;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *
@@ -27,9 +42,9 @@ public class ProductController {
 
 //    public ProductController() {
 //    }
-     @Resource
+    @Resource
     private ProductService productService;
-      @Resource
+    @Resource
     private UserService userService;
 
     public void setProductService(ProductService productService) {
@@ -38,50 +53,77 @@ public class ProductController {
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.GET)
     public String goToaddProduct(HttpSession session, Model model) {
- model.addAttribute("currentCustomer",  session.getAttribute("currentCustomer"));
-       
+        model.addAttribute("currentCustomer", session.getAttribute("currentCustomer"));
+
         return "addProduct";
     }
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
-    public String addProduct(String productName,String price, String description, Model model, HttpSession session) {
-       double thePrice = Double.parseDouble(price);
+    public String addProduct(String productName, String price, String description, Model model,
+            HttpSession session, @RequestParam("file") MultipartFile file) {
+
+        double thePrice = Double.parseDouble(price);
         Product newProduct = new Product(productName, thePrice, description);
+
+        if (!file.isEmpty()) {
+            try {
+                newProduct.setProductImage(file.getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         productService.addProduct(newProduct);
         model.addAttribute("added", newProduct.getProductName());
         session.setAttribute("added", newProduct.getProductName());
         return "redirect:/addProductSuccess";
     }
-    
-     @RequestMapping(value="/addProductSuccess",method=RequestMethod.GET)
-     public String goToAddProductSuccess(Model model, HttpSession session){
-         
-         model.addAttribute("added", session.getAttribute("added"));
-          UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-           
-           Customer c1 =(Customer)userService.findCustomerByUserName(userDetails.getUsername());
-          // Customer c1 = new Customer(userDetails.getUsername(), "wel", "myEmail@yahoo.com", "kobi", "kobipass");
-           session.setAttribute("currentCustomer", c1);
-                   
-           model.addAttribute("currentCustomer", session.getAttribute("currentCustomer"));
-                  
-         
-         return "addSuccess";
-     }
-     
-     @RequestMapping(value="/products", method=RequestMethod.GET)
-	public String getAll(Model model) {
-		model.addAttribute("products", productService.getAll());
-               
-		return "productList";
-	}
-        
-        @RequestMapping(value="/product/delete", method=RequestMethod.POST)
-	public String deleteProduct(int productId) {
-            
-                Product p1=productService.get(productId);
-		productService.delete(p1);
-		return "redirect:/products";
-	}
+
+    @RequestMapping(value = "/productpic/{id}", method = RequestMethod.GET)
+    public void getUserImage(Model model, @PathVariable int id, HttpServletResponse response) {
+        try {
+            Product c = productService.get(id);
+            if (c != null) {
+                OutputStream out = response.getOutputStream();
+                out.write(c.getProductImage()); 
+                response.flushBuffer();
+            }
+        } catch (IOException ex) {
+            //Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @RequestMapping(value = "/addProductSuccess", method = RequestMethod.GET)
+    public String goToAddProductSuccess(Model model, HttpSession session
+    ) {
+
+        model.addAttribute("added", session.getAttribute("added"));
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Customer c1 = (Customer) userService.findCustomerByUserName(userDetails.getUsername());
+        // Customer c1 = new Customer(userDetails.getUsername(), "wel", "myEmail@yahoo.com", "kobi", "kobipass");
+        session.setAttribute("currentCustomer", c1);
+
+        model.addAttribute("currentCustomer", session.getAttribute("currentCustomer"));
+
+        return "addSuccess";
+    }
+
+    @RequestMapping(value = "/products", method = RequestMethod.GET)
+    public String getAll(Model model
+    ) {
+        model.addAttribute("products", productService.getAll());
+
+        return "productList";
+    }
+
+    @RequestMapping(value = "/product/delete", method = RequestMethod.POST)
+    public String deleteProduct(int productId
+    ) {
+
+        Product p1 = productService.get(productId);
+        productService.delete(p1);
+        return "redirect:/products";
+    }
 
 }

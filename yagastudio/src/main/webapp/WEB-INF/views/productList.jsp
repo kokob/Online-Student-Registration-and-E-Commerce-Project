@@ -19,9 +19,10 @@
 	<c:forEach var="myproduct" items="${products}">
 	<fieldset>
             <ul>
-		<li>Product name: ${myproduct.productName}</li>
+		<li> ${myproduct.productName}</li>             
+                <p><img src="productpic/${myproduct.id}" width="100" height="100"/></p>
 		<li>Price: ${myproduct.price}</li>
-		<li>Description${myproduct.description}</li>		
+		<li>Description: ${myproduct.description}</li>		
 		<a href="products/${myproduct.id}">edit</a>
                  <form action="product/delete?productId=${myproduct.id}" method="post">
                             <button type="submit">Delete</button>

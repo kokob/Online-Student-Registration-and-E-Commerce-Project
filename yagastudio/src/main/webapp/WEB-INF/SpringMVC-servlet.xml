@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:c="http://www.springframework.org/schema/c"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -39,22 +39,22 @@
     
     <bean id="customerService" class="cs425.yogastudio.service.CustomerService">
         <property name="customerDAO" ref="customerDao"/>
-	<property name="roleDAO" ref="roleDao"/> 
+        <property name="roleDAO" ref="roleDao"/> 
     </bean>
     <bean id="productService" class="cs425.yogastudio.service.ProductService">
         <property name="productDAO" ref="productDao"/>
     </bean>
-     <bean id="facultyService" class="cs425.yogastudio.service.FacultyService">
+    <bean id="facultyService" class="cs425.yogastudio.service.FacultyService">
         <property name="facultyDAO" ref="facultyDao"/>
-  <property name="roleDAO" ref="roleDao"/> 
+        <property name="roleDAO" ref="roleDao"/> 
     </bean>
     <bean id="courseService" class="cs425.yogastudio.service.CourseService">
         <property name="courseDAO" ref="courseDao"/>
     </bean>
-	  <bean id="sectionService" class="cs425.yogastudio.service.SectionService">
+    <bean id="sectionService" class="cs425.yogastudio.service.SectionService">
         <property name="sectionDAO" ref="sectionDao"/>
     </bean>
-	 <bean id="userService" class="cs425.yogastudio.service.UserService">
+    <bean id="userService" class="cs425.yogastudio.service.UserService">
         <property name="userDAO" ref="userDao"/>
     </bean>
     
@@ -68,24 +68,24 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-     <bean id="productDao" class="cs425.yogastudio.DAO.ProductDAO">
+    <bean id="productDao" class="cs425.yogastudio.DAO.ProductDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     <bean id="courseDao" class="cs425.yogastudio.DAO.CourseDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-     <bean id="sectionDao" class="cs425.yogastudio.DAO.SectionDAO">
+    <bean id="sectionDao" class="cs425.yogastudio.DAO.SectionDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
-  <bean id="roleDao" class="cs425.yogastudio.DAO.RoleDAO">
+    <bean id="roleDao" class="cs425.yogastudio.DAO.RoleDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-	  <bean id="userDao" class="cs425.yogastudio.DAO.UserDAO">
+    <bean id="userDao" class="cs425.yogastudio.DAO.UserDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
-     <!--Session Factory bean-->
+    <!--Session Factory bean-->
     
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
@@ -113,7 +113,7 @@
         </property>
     </bean>
     
-        <!--Data Source beans--> 
+    <!--Data Source beans--> 
     
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -128,7 +128,7 @@
     <bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="properties">
             <props>
-               <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="connection.pool.size">1</prop>
                 <prop key="hibernate.show_sql">true</prop>
@@ -140,7 +140,10 @@
     <!--Transaction Manager--> 
     <!-- Resolves views selected for rendering by @Controllers to .jsp resources 
     in the /WEB-INF/views directory -->
-    
+     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+         <!--setting maximum upload size--> 
+        <property name="maxUploadSize" value="100000" />
+    </bean>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         
@@ -149,12 +152,14 @@
         <property name="suffix" value=".jsp" />
     </bean>
     
-<tx:annotation-driven transaction-manager="txManager" />
+    <tx:annotation-driven transaction-manager="txManager" />
     
     <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="dataSource" ref="dataSource"/>
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+    
+   
     
     
 

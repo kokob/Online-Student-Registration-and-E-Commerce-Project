@@ -34,9 +34,9 @@ public class Faculty extends User {
 	
     @OneToMany(cascade = CascadeType.ALL)
 	private List<Address> addresses;// = new ArrayList<Address>();
-    @OneToMany(mappedBy = "faculty")
+    @OneToMany(mappedBy = "faculty",cascade = CascadeType.ALL)
 	private List<Waiver> waiversToApprove;// = new ArrayList<Waiver>();
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher",cascade = CascadeType.ALL)
 	private List<Section> sectionsToTeach;// = new ArrayList<Section>();
     @OneToMany(mappedBy = "advisor")
 	private List<Customer> advisees;// = new ArrayList<Customer>();
