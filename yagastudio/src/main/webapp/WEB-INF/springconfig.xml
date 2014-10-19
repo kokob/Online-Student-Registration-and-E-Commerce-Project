@@ -29,7 +29,7 @@
             <user-service>
                 <user name="bereket" password="2222" authorities="ROLE_USER" />
                 <user name="kokob" password="3333" authorities="ROLE_USER" />
-                <user name="kalu" password="1111" authorities="ROLE_USER, ROLE_ADMIN" />
+                <user name="zman" password="1111" authorities="ROLE_USER, ROLE_ADMIN" />
             </user-service>
         </authentication-provider>
     </authentication-manager>

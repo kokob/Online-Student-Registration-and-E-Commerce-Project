@@ -46,9 +46,9 @@ public class CustomerService {
         return customerDAO.get(id);
     }
 
-    public void update(int customerId, Customer customer) {
+    public void update(Customer customer) {
 
-        customerDAO.update(customerId, customer);
+        customerDAO.update(customer);
     }
 
     public void delete(int customerId) {
@@ -59,6 +59,10 @@ public class CustomerService {
     public Customer findCustomerByName(String firstname){
         
         return customerDAO.findCustomerByName(firstname);
+    }
+    
+    public Customer getCustomerByUser(String username) {
+        return customerDAO.getCustomerByUser(username);
     }
     
 }

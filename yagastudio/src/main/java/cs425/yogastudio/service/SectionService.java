@@ -40,9 +40,9 @@ public class SectionService {
         return sectionDAO.get(id);
     }
 
-    public void update(int sectionId, Section section) {
+    public void update(Section section) {
 
-        sectionDAO.update(sectionId, section);
+        sectionDAO.update(section);
     }
 
     public void delete(int sectionId) {

@@ -39,9 +39,9 @@ public class FacultyService {
         return facultyDAO.get(id);
     }
 
-    public void update(int facultyId, Faculty faculty) {
+    public void update(Faculty faculty) {
 
-        facultyDAO.update(facultyId, faculty);
+        facultyDAO.update(faculty);
     }
 
     public void delete(int facultyId) {

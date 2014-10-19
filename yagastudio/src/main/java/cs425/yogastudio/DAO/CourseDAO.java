@@ -44,7 +44,7 @@ public class CourseDAO {
         return (Course) sessionFactory.getCurrentSession().get(Course.class, id);
     }
 
-    public void update(int courseId, Course course) {
+    public void update(Course course) {
         sessionFactory.getCurrentSession().update(course);
     }
 

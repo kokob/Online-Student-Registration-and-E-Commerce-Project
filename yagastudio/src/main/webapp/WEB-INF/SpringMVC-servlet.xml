@@ -49,8 +49,11 @@
     <bean id="courseService" class="cs425.yogastudio.service.CourseService">
         <property name="courseDAO" ref="courseDao"/>
     </bean>
-	  <bean id="sectionService" class="cs425.yogastudio.service.SectionService">
+    <bean id="sectionService" class="cs425.yogastudio.service.SectionService">
         <property name="sectionDAO" ref="sectionDao"/>
+    </bean>
+    <bean id="waiverService" class="cs425.yogastudio.service.WaiverService">
+        <property name="waiverDAO" ref="waiverDao"/>
     </bean>
     
     <!--DAO beans-->
@@ -70,6 +73,9 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
      <bean id="sectionDao" class="cs425.yogastudio.DAO.SectionDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="waiverDao" class="cs425.yogastudio.DAO.WaiverDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
@@ -117,10 +123,10 @@
     <bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="properties">
             <props>
-<!--                <prop key="hibernate.hbm2ddl.auto">create</prop>-->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="connection.pool.size">1</prop>
-                <prop key="hibernate.show_sql">false</prop>
+                <!--<prop key="hibernate.show_sql">false</prop>-->
                 <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
             </props>
         </property>

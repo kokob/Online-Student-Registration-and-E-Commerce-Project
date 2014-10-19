@@ -43,7 +43,7 @@ public class SectionDAO {
         return (Section) sessionFactory.getCurrentSession().get(Section.class, id);
     }
 
-    public void update(int sectionId, Section section) {
+    public void update(Section section) {
         sessionFactory.getCurrentSession().update(section);
     }
 

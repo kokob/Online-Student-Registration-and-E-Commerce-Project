@@ -15,6 +15,8 @@ import static java.lang.Integer.parseInt;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,9 +36,10 @@ public class CourseController {
     private FacultyService facultyService;
 
     @RequestMapping(value = "/addCourse", method = RequestMethod.POST)
-    public String addingCourse(String name, String code, String credit, HttpSession session) {
+    public String addingCourse(String name, String code, String credit, int prereq_id, HttpSession session) {
         int theCredit = parseInt(credit);
         Course course = new Course(name, code, theCredit);
+        course.setPrerequisite(courseService.get(prereq_id));
         courseService.addCourse(course);
         session.setAttribute("added", course.getCourseName());
         return "redirect:/addsuccess";
@@ -50,7 +53,8 @@ public class CourseController {
 
     @RequestMapping(value = "/addCourse", method = RequestMethod.GET)
     public String toAddCourse(Model model, HttpSession session) {
-        model.addAttribute("added", session.getAttribute("added"));
+        //model.addAttribute("added", session.getAttribute("added"));
+        model.addAttribute("allcourses", courseService.getAll());
         return "addCourse";
     }
 
@@ -64,6 +68,7 @@ public class CourseController {
     @RequestMapping(value = "/course/{id}", method = RequestMethod.GET)
     public String update(Model model, @PathVariable int id) {
         model.addAttribute("course", courseService.get(id)); // course.id already set by binding
+        
 
         return "courseUpdateDelete";
     }
@@ -77,9 +82,11 @@ public class CourseController {
     @RequestMapping(value = "/viewCourses", method = RequestMethod.GET)
     public String goViewCourses(Model model, HttpSession session) {
         List<Course> allCourses = courseService.getAll();
-
+        session.setAttribute("allcourses", allCourses);
         //model.addAttribute("currentCourse", session.getAttribute("currentReader"));
-        model.addAttribute("courses", allCourses);
+        model.addAttribute("allcourses", allCourses);
+        
+        
 
         return "viewCourses";
     }
@@ -92,6 +99,7 @@ public class CourseController {
 
         List<Section> sections = ((Course) session.getAttribute("currentCourse")).getSections();
         model.addAttribute("sections", sections);
+        
 
         return "courseDetail";
     }
