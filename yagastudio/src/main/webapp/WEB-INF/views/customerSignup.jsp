@@ -31,8 +31,7 @@
                 </div>
 
             </form>
-            <label><a href="index.jsp">Cancel</a><label>
-        </fieldset>     
-    </div>     
+            <label><a href="index.jsp">Cancel</a></label>
+        </fieldset>          
 </body>
 </html>

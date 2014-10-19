@@ -9,6 +9,7 @@ package cs425.yogastudio.DAO;
 import cs425.yogastudio.entity.Customer;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Propagation;
@@ -52,7 +53,7 @@ public class CustomerDAO {
         return (Customer)sessionFactory.getCurrentSession().get(Customer.class, id);
     }
 
-    public void update(int customerId, Customer customer) {
+    public void update(Customer customer) {
         sessionFactory.getCurrentSession().update(customer);
     }
 
@@ -67,6 +68,14 @@ public class CustomerDAO {
         criteria.add(Restrictions.eq("firstName", firstName));
     
         return (Customer) criteria.uniqueResult();
+    }
+    
+    public Customer getCustomerByUser(String username) {
+        Query query = sessionFactory.getCurrentSession().createQuery("Select distinct c from Customer c where c.userName=:username");
+         query.setString("username", username);
+         
+         Customer customer = (Customer)query.uniqueResult();
+         return customer;
     }
     
     

@@ -39,7 +39,9 @@ public class FacultyService {
 
     public void add(Faculty faculty) {
         Role roleFaculty = roleDAO.getRoleByRoleName("ROLE_FACULTY");
+//        Role roleAdmin = roleDAO.getRoleByRoleName("ROLE_ADMIN");
         faculty.getRoles().add(roleFaculty);
+//        faculty.getRoles().add(roleAdmin);
         facultyDAO.add(faculty);
     }
 
@@ -48,9 +50,9 @@ public class FacultyService {
         return facultyDAO.get(id);
     }
 
-    public void update(int facultyId, Faculty faculty) {
+    public void update(Faculty faculty) {
 
-        facultyDAO.update(facultyId, faculty);
+        facultyDAO.update(faculty);
     }
 
     public void delete(Faculty faculty) {

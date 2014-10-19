@@ -14,24 +14,36 @@
     <beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" /> 
     
     <!--<http pattern="views/home.jsp" security="none" />-->
+    <global-method-security pre-post-annotations="enabled"/>
      
-     <http>
+    <!--<http>-->
+    <http>
+        
+         <access-denied-handler ref="myAccessDeniedHandler" />
     
         <!---->        
         <!--<intercept-url pattern="/**" access="isAuthenticated()"/>-->
 
         <intercept-url pattern="/addProduct" method="GET" access="ROLE_ADMIN" />
-        <intercept-url pattern="/addCourse" method="GET" access="ROLE_ADMIN" />
+        <intercept-url pattern="/addCourse" method="GET" access="ROLE_FACULTY" />
         <intercept-url pattern="/addCustomer" method="GET" access="ROLE_ADMIN" />
         
         <!--default-target-url="/login"-->
         
-        <form-login  login-page="/login.jsp" />
-        <logout logout-success-url="/index.jsp" />
+        <form-login  login-page="/login.jsp" authentication-failure-url = "/login.jsp?login_error=1"/>
+        <logout delete-cookies="true" invalidate-session="true" logout-success-url="/index.jsp" />
         
 
     
     </http>
+    
+    
+    <beans:bean id="myAccessDeniedHandler" class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+    
+        <beans:property name="errorPage" value="/index.jsp" />
+    
+    </beans:bean>
+
     
     <authentication-manager>
         <authentication-provider>
@@ -40,9 +52,49 @@
                 <user name="bereket" password="2222" authorities="ROLE_FACULTY" />
                 <user name="kokob" password="3333" authorities="ROLE_CUSTOMER" />
                 <user name="abel" password="4444" authorities="ROLE_CUSTOMER" />
-                <user name="zeriet" password="1111" authorities="ROLE_ADMIN, ROLE_CUSTOMER, ROLE_CUSTOMER" />
+                <user name="zeriet" password="1111" authorities="ROLE_ADMIN,ROLE_CUSTOMER,ROLE_CUSTOMER" />
             </user-service>
         </authentication-provider>
+        
+<!--         <authentication-provider>
+            <password-encoder hash="bcrypt" />
+            <jdbc-user-service 
+                data-source-ref="dataSource"  
+                           users-by-username-query="select userName, passWord, 1 enabled from reader where username=?"
+            
+                          authorities-by-username-query="
+            select u.userName, r.roleName from Reader u,
+            Reader_Roles ur,role r where u.id = ur.reader_id and r.id=ur.authority_id
+            and u.userName =?"  />   
+        </authentication-provider>-->
+        
+        
+        
+ <!--       this tag has to be inside the authentication-provider below   <password-encoder hash="bcrypt" />   -->
+ 
+<!-- 
+         <authentication-provider>
+       
+            <jdbc-user-service 
+                data-source-ref="dataSource" 
+                
+                users-by-username-query="select username,password from user where username=?"
+                
+                
+                authorities-by-username-query="select role from usersandroles where username =?  "  />   
+            
+            
+        </authentication-provider>-->
+<!--         <authentication-provider>
+       
+            <jdbc-user-service 
+                data-source-ref="dataSource" 
+                users-by-username-query="select username,password, active=1 enabled from credential
+                                             where username=?" 
+                authorities-by-username-query="select username, role as authority from credential 
+                                                where username=?"  />   
+        </authentication-provider>-->
+        
     </authentication-manager>
 
  

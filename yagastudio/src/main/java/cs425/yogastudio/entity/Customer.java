@@ -8,8 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -40,23 +40,26 @@ public class Customer extends User {
 //    private String password;
 
     private boolean isEnrolled;
-    @ManyToMany
-    private List<Section> sectionsEnrolled;// = new ArrayList<Section>();
+    
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "enrolled")
+    private List<Section> sectionsEnrolled;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "waitlisted")
+    private List<Section> sectionsWaitlisted;
+    
     @ManyToOne
     private Faculty advisor;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Address> addresses;// = new ArrayList<Address>();
     @OneToMany(mappedBy = "customer")
     private List<Waiver> waivers;// = new ArrayList<Waiver>();
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private List<CourseTaken> coursesTaken;// = new ArrayList<CourseTaken>();
     @OneToMany(mappedBy = "customer")
     private List<Order> orders;// = new ArrayList<Order>();
     @OneToOne(mappedBy = "customer" , cascade = CascadeType.ALL)
     private ShoppingCart shoppingCart;
     
-    @ManyToMany(mappedBy = "waitlisted")
-    private List<Section> sectionsWaitlisted;// = new ArrayList<Section>();
+    
 
     public Customer() {
         super();
@@ -224,6 +227,10 @@ public class Customer extends User {
     
     public void removeAddress(Address address){
         addresses.remove(address);
+    }
+    
+    public void addSectionsWaitlisted(Section section) {
+        sectionsWaitlisted.add(section);
     }
 
 }

@@ -43,9 +43,9 @@ public class ProductService {
         return productDAO.get(id);
     }
 
-    public void update(int productId, Product product) {
+    public void update(Product product) {
 
-        productDAO.update(productId, product);
+        productDAO.update(product);
     }
 
     public void delete(Product product) {

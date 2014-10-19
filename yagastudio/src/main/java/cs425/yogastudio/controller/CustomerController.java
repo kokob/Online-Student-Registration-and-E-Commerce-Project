@@ -81,7 +81,7 @@ public class CustomerController {
     
      @RequestMapping(value="/customer/{id}", method=RequestMethod.POST)
 	public String updateCustomer(@PathVariable int id, HttpSession session) {            
-		customerService.update(id, (Customer)session.getAttribute("customer"));
+		customerService.update((Customer)session.getAttribute("customer"));
 		return "redirect:/customers";
 	}
         

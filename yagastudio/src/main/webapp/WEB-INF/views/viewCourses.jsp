@@ -19,11 +19,12 @@
                 <h1>Courses currently in Yoga Studio</h1>
                 
         <fieldset>   
-                    <c:forEach var="course" items="${courses}">
+                    <c:forEach var="course" items="${allcourses}">
                         <label> <a href="courses/${course.id}"> ${course.courseName} </a></label>                        
                     </c:forEach>
                
         </fieldset>
+                
         </div>
     </body>
 </html>

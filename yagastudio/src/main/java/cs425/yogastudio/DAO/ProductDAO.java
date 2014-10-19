@@ -42,7 +42,7 @@ public class ProductDAO {
         return (Product) sessionFactory.getCurrentSession().get(Product.class, id);
     }
 
-    public void update(int productId, Product product) {
+    public void update(Product product) {
         sessionFactory.getCurrentSession().update(product);
         sessionFactory.getCurrentSession().flush();
     }

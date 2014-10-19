@@ -10,10 +10,13 @@ import cs425.yogastudio.entity.Faculty;
 import cs425.yogastudio.entity.Section;
 import cs425.yogastudio.service.FacultyService;
 import cs425.yogastudio.service.CourseService;
+import cs425.yogastudio.service.FacultyService;
 import static java.lang.Integer.parseInt;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,9 +37,10 @@ public class CourseController {
     private FacultyService facultyService;
 
     @RequestMapping(value = "/addCourse", method = RequestMethod.POST)
-    public String addingCourse(String name, String code, String credit, HttpSession session) {
+    public String addingCourse(String name, String code, String credit, int prereq_id, HttpSession session) {
         int theCredit = parseInt(credit);
         Course course = new Course(name, code, theCredit);
+        course.setPrerequisite(courseService.get(prereq_id));
         courseService.addCourse(course);
         session.setAttribute("added", course.getCourseName());
         return "redirect:/addsuccess";
@@ -50,7 +54,8 @@ public class CourseController {
 
     @RequestMapping(value = "/addCourse", method = RequestMethod.GET)
     public String toAddCourse(Model model, HttpSession session) {
-        model.addAttribute("added", session.getAttribute("added"));
+        //model.addAttribute("added", session.getAttribute("added"));
+        model.addAttribute("allcourses", courseService.getAll());
         return "addCourse";
     }
 
@@ -70,7 +75,7 @@ public class CourseController {
     }
     @RequestMapping(value="/course/{id}", method=RequestMethod.POST)
 	public String updateCourse(@PathVariable int id, HttpSession session) {            
-		courseService.update(id, (Course)session.getAttribute("course")); // course.id already set by binding 
+		courseService.update((Course)session.getAttribute("course")); // course.id already set by binding 
 		return "redirect:/courses";
 	}
         
@@ -98,7 +103,7 @@ public class CourseController {
         List<Course> allCourses = courseService.getAll();
 
         //model.addAttribute("currentCourse", session.getAttribute("currentReader"));
-        model.addAttribute("courses", allCourses);
+        model.addAttribute("allcourses", allCourses);
 
         return "viewCourses";
     }

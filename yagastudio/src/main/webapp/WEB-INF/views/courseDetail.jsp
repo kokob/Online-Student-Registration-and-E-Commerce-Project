@@ -16,30 +16,47 @@
     </head>
     <body>
 
-        <form action="../courses/${course.id}" method="post">
-            <form>
+        <!--<form action="../courses/${course.id}" method="POST">-->
+            <!--<form>-->
                 <fieldset>
                     <legend>Course Detail:</legend>
                     Course Name: ${currentCourse.courseName}<br>
                     Course Code: ${currentCourse.courseCode}<br>
                     Credit Hours: ${currentCourse.courseCredit}
-                    Sections:
-                    <ul>
-                        <c:forEach var="section" items="${currentCourse.sections}" >
+                    Sections:<br/>
+                    
+                    <!--<form action="../enroll/${section.id}" method="POST">-->
+                    <!--<form action="../enroll" method="get">-->
+                        <ul>
+                            <c:forEach var="section" items="${currentCourse.sections}" >
+                                <!--<li>-->
+                                    <!--<input type="radio" name="sectionid" value="${section.id}" />-->
+                                    <!--Professor ${section.teacher.firstName} ${section.teacher.lastName}<br />-->
+                                <!--</li>-->
 
-                                <li>Professor ${section.teacher.firstName} ${section.teacher.lastName}</li>
+                                
 
-                        </c:forEach>
-                    </ul>
+                                    <li>
+                                        Professor ${section.teacher.firstName} ${section.teacher.lastName}  
+                                        <a href="../enroll/${section.id}">enroll</a>
+                                    </li>
+
+<!--                                <input type="submit" value="Enroll"/>-->
+
+
+                            </c:forEach>
+                        </ul>
+                        
+                        <!--<input type="submit" value="Enroll"/>-->
+                    
+                    <!--</form>-->
                 </fieldset>
 
 
-
+                    
                 <p> <a href="registerForCourse">Register</a> &nbsp;
                     <a href="applyForWaiver"> Apply For Waiver</a></p>
             </form>
-          <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
-            <label><a href="index.jsp">Cancel</a></label>
 
 
     </body>

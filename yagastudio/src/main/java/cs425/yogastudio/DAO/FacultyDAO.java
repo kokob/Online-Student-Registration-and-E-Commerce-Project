@@ -4,7 +4,9 @@ package cs425.yogastudio.DAO;
 
 import cs425.yogastudio.entity.Faculty;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +45,7 @@ public class FacultyDAO {
         return (Faculty)sessionFactory.getCurrentSession().get(Faculty.class, id);
     }
 
-    public void update(int facultyId, Faculty faculty) {
+    public void update(Faculty faculty) {
         sessionFactory.getCurrentSession().update(faculty);
     }
 
@@ -52,6 +54,17 @@ public class FacultyDAO {
           sessionFactory.getCurrentSession().delete(faculty);
           sessionFactory.getCurrentSession().flush();
             
+    }
+    
+        
+     public Faculty findFacultyByUserName(String userName){
+        
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Faculty.class);
+       
+        criteria.add(Restrictions.eq("userName", userName));
+    
+        return (Faculty) criteria.uniqueResult();
+         
     }
     
     
