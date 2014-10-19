@@ -9,25 +9,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link href="resources/style.css" rel="stylesheet" type="text/css" />
+        <link href="resources/style.css" rel="stylesheet" type="text/css" />
         <title>JSP Page</title>
     </head>
     <body>
-       
-	<h1>List of courses</h1>
-	<fieldset>
-	<c:forEach var="course" items="${courses}">
-	<fieldset>
-            <ul>
-                <p><strong>${course.courseName}</strong></p>
-              
-		<li>course code: ${course.courseCode}</li>
-		<li>course credit:${course.courseCredit}</li>		
-		<a href="course/${course.id}">edit</a>
-                  </ul>
-	</fieldset>
-	</c:forEach>
-	</fieldset>	
-<!--	<a href="addCar.html"> Add a Car</a>-->
+
+        <h1>List of courses</h1>
+        <fieldset>
+            <c:forEach var="course" items="${courses}">
+                <fieldset>
+                    <ul>
+                        <p><strong>${course.courseName}</strong></p>              
+                        <li>course code: ${course.courseCode}</li>
+                        <li>course credit:${course.courseCredit}</li>		
+                        <a href="course/${course.id}">edit</a>
+                        <form action="course/delete?courseId=${course.id}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </ul>
+                </fieldset>
+            </c:forEach>
+        </fieldset>
+
+     <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+        <label><a href="index.jsp">Cancel</a></label>
+   
+        <!--	<a href="addCar.html"> Add a Car</a>-->
     </body>
 </html>

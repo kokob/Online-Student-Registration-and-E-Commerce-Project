@@ -20,6 +20,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -66,31 +67,46 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/course/{id}", method = RequestMethod.GET)
-    public String update(Model model, @PathVariable int id) {
+    public String update(Model model, @PathVariable int id, HttpSession session) {
+        session.setAttribute("course", courseService.get(id));
         model.addAttribute("course", courseService.get(id)); // course.id already set by binding
         
-
-        return "courseUpdateDelete";
+        return "courseUpdate";
     }
-
-    @RequestMapping(value = "/course/delete", method = RequestMethod.POST)
-    public String delete(int courseID) {
-        courseService.delete(courseID);
-        return "redirect:/course";
-    }
+    @RequestMapping(value="/course/{id}", method=RequestMethod.POST)
+	public String updateCourse(@PathVariable int id, HttpSession session) {            
+		courseService.update((Course)session.getAttribute("course")); // course.id already set by binding 
+		return "redirect:/courses";
+	}
+        
+        @RequestMapping(value="/course/delete", method=RequestMethod.POST)
+	public String deleteCourse(int courseId) {
+            
+                Course c1=courseService.get(courseId);
+		courseService.delete(c1);
+		return "redirect:/courses";
+	}
+//        
+//       @RequestMapping(value="/course/{id}", method=RequestMethod.POST)
+//        public String updateCourse(String name, String code, String credit, HttpSession session,@PathVariable int id) {
+//        int theCredit = parseInt(credit);
+//        Course course = new Course(name, code, theCredit);
+//        courseService.update(id,course);
+//        session.setAttribute("course", course);
+//        return "redirect:/courses";
+//    }
+//        
+   
 
     @RequestMapping(value = "/viewCourses", method = RequestMethod.GET)
     public String goViewCourses(Model model, HttpSession session) {
         List<Course> allCourses = courseService.getAll();
-        session.setAttribute("allcourses", allCourses);
+
         //model.addAttribute("currentCourse", session.getAttribute("currentReader"));
         model.addAttribute("allcourses", allCourses);
-        
-        
 
         return "viewCourses";
     }
-    
 
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.GET)
     public String getCourse(@PathVariable int id, Model model, HttpSession session) {
@@ -99,12 +115,10 @@ public class CourseController {
 
         List<Section> sections = ((Course) session.getAttribute("currentCourse")).getSections();
         model.addAttribute("sections", sections);
-        
 
         return "courseDetail";
     }
-    
-    
+   
 
     @RequestMapping(value = "/createSection", method = RequestMethod.GET)
     public String toCreateSection(Model model, HttpSession session) {

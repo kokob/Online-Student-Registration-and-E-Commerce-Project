@@ -6,6 +6,7 @@
 
 package cs425.yogastudio.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Role {
     private String roleName;
     
     @ManyToMany(mappedBy = "roles")
-    private List<User> users;
+    private List<User> users = new ArrayList<User>();
 
     public Role() {
     }

@@ -39,20 +39,25 @@
     
     <bean id="customerService" class="cs425.yogastudio.service.CustomerService">
         <property name="customerDAO" ref="customerDao"/>
+	<property name="roleDAO" ref="roleDao"/> 
     </bean>
     <bean id="productService" class="cs425.yogastudio.service.ProductService">
         <property name="productDAO" ref="productDao"/>
     </bean>
      <bean id="facultyService" class="cs425.yogastudio.service.FacultyService">
         <property name="facultyDAO" ref="facultyDao"/>
+  <property name="roleDAO" ref="roleDao"/> 
     </bean>
     <bean id="courseService" class="cs425.yogastudio.service.CourseService">
         <property name="courseDAO" ref="courseDao"/>
     </bean>
-    <bean id="sectionService" class="cs425.yogastudio.service.SectionService">
+	  <bean id="sectionService" class="cs425.yogastudio.service.SectionService">
         <property name="sectionDAO" ref="sectionDao"/>
     </bean>
-    <bean id="waiverService" class="cs425.yogastudio.service.WaiverService">
+	 <bean id="userService" class="cs425.yogastudio.service.UserService">
+        <property name="userDAO" ref="userDao"/>
+    </bean>
+        <bean id="waiverService" class="cs425.yogastudio.service.WaiverService">
         <property name="waiverDAO" ref="waiverDao"/>
     </bean>
     
@@ -75,10 +80,16 @@
      <bean id="sectionDao" class="cs425.yogastudio.DAO.SectionDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    <bean id="waiverDao" class="cs425.yogastudio.DAO.WaiverDAO">
+    
+  <bean id="roleDao" class="cs425.yogastudio.DAO.RoleDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    
+	  <bean id="userDao" class="cs425.yogastudio.DAO.UserDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+        <bean id="waiverDao" class="cs425.yogastudio.DAO.WaiverDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     
      <!--Session Factory bean-->
     
@@ -123,10 +134,10 @@
     <bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="properties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+               <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="connection.pool.size">1</prop>
-                <!--<prop key="hibernate.show_sql">false</prop>-->
+                <prop key="hibernate.show_sql">true</prop>
                 <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
             </props>
         </property>

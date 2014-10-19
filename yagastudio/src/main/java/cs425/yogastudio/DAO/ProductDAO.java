@@ -44,10 +44,11 @@ public class ProductDAO {
 
     public void update(Product product) {
         sessionFactory.getCurrentSession().update(product);
+        sessionFactory.getCurrentSession().flush();
     }
 
-    public void delete(int productId) {
-        sessionFactory.getCurrentSession().delete(productId);
+    public void delete(Product product) {
+        sessionFactory.getCurrentSession().delete(product);
     }
 
 }

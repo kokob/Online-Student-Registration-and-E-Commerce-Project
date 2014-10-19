@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>This is Footer!</h1>
+        <div id="footer">
+        <p>Copyright © ZKAB</p>
+        </div>
     </body>
 </html>

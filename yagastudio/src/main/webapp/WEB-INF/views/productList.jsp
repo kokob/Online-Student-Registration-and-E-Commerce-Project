@@ -22,11 +22,14 @@
 		<li>Product name: ${myproduct.productName}</li>
 		<li>Price: ${myproduct.price}</li>
 		<li>Description${myproduct.description}</li>		
-		<a href="cars/${car.id}">edit</a>
+		<a href="products/${myproduct.id}">edit</a>
+                 <form action="product/delete?productId=${myproduct.id}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
                   </ul>
 	</fieldset>
 	</c:forEach>
 	</fieldset>	
-	<a href="addCar.html"> Add a Car</a>
+	
     </body>
 </html>

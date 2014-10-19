@@ -48,9 +48,9 @@ public class CourseService {
         courseDAO.update(course);
     }
 
-    public void delete(int courseId) {
+    public void delete(Course course) {
 
-        courseDAO.delete(courseId);
+        courseDAO.delete(course);
     }
 
 }

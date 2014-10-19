@@ -46,10 +46,12 @@ public class CourseDAO {
 
     public void update(Course course) {
         sessionFactory.getCurrentSession().update(course);
+        sessionFactory.getCurrentSession().flush();
     }
 
-    public void delete(int courseId) {
-        sessionFactory.getCurrentSession().delete(courseId);
+    public void delete(Course course) {
+        
+        sessionFactory.getCurrentSession().delete(course);
     }
 
 }

@@ -48,8 +48,8 @@ public class ProductService {
         productDAO.update(product);
     }
 
-    public void delete(int productId) {
+    public void delete(Product product) {
 
-        productDAO.delete(productId);
+        productDAO.delete(product);
     }
 }

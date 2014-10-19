@@ -24,7 +24,7 @@
                     </c:forEach>
                
         </fieldset>
-                <p>${thisuser}</p>
+                
         </div>
     </body>
 </html>
