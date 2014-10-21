@@ -33,6 +33,8 @@
                 
                 <p> <a href="adminSignup"> Add Admin</a></p>
                 
+                <p> <a href="adminSignup"> Add Admin</a></p>
+                
                 <sec:authorize access="isAnonymous()">
                 <p> <a href="login.jsp"> Log in</a></p>    
                 </sec:authorize>     
