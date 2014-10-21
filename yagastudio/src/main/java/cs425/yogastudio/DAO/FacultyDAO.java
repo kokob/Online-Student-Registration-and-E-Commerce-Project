@@ -4,6 +4,7 @@ package cs425.yogastudio.DAO;
 
 import cs425.yogastudio.entity.Faculty;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,6 +55,16 @@ public class FacultyDAO {
 //                 delete from Faculty where Facultuy_ID=faculty.getId()
     }
     
+    public Faculty getFacultyByUser(String username) {
+        Query query = sessionFactory.getCurrentSession().createQuery("Select distinct f from Faculty f where f.userName=:username");
+         query.setString("username", username);
+         
+         List<Faculty> faculties = query.list();
+         
+         //Faculty faculty = (Faculty)query.uniqueResult();
+         //return faculty;
+         return faculties.get(0);
+    }
     
 }
 

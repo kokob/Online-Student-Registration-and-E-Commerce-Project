@@ -4,7 +4,7 @@
     Author     : kokob
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,10 +14,19 @@
     </head>
     <body>
 
-        <fieldset>      
+        <fieldset> 
             <form action="addCustomer" method="post">
                 <div>
-                    <legend>New customer signup</legend>           
+                    <legend>New customer signup</legend> 
+                    
+                    <div class="errorClass">
+                        <c:if test="${nonUniqueMessage ne null}" >
+                            <p>${nonUniqueMessage}</p>
+                            <c:set var="nonUniqueMessage" scope="session" value="${null}"/>
+                            
+                        </c:if>
+                    </div>
+                    
                     <label>First Name:</label> <input type="text" name="firstname" />                    
                     <label>Last Name:</label> <input type="text" name="lastname" />                       
                     <label>User Name:</label> <input type="text" name="username" />                        
@@ -32,7 +41,11 @@
 
             </form>
             <label><a href="index.jsp">Cancel</a><label>
-        </fieldset>     
-    </div>     
-</body>
-</html>
+
+
+                    </fieldset> 
+
+
+
+                    </body>
+                    </html>

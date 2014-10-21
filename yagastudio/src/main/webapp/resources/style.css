@@ -271,3 +271,7 @@ ul, li {
 * html #menu-bar {
   height: 1%;
 }
+
+.errorClass {
+    color: red;
+}

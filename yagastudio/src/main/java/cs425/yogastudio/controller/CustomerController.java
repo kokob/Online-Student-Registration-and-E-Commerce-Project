@@ -38,25 +38,25 @@ public class CustomerController {
     
     
     @RequestMapping(value="/customerSignup",method=RequestMethod.GET)
-     public String goToCustomerSignUp(){
-         
+     public String goToCustomerSignUp(Model model, HttpSession session){
+         //model.addAttribute("nonUniqueMessage", "not unique");
          return "customerSignup";
      }
      
-     @RequestMapping(value="/addCustomer", method=RequestMethod.POST)
-     public String addCustomer(String firstname, String lastname, String email,
-            String username, String password, String state, String zip, String street, String city, Model model, HttpSession session){
-         
-         Customer newCustomer = new Customer(firstname, lastname, email, username, password);
-         Address newAddress = new Address(state, zip, street, city);
-//         ShoppingCart shoppingCart = new ShoppingCart(newCustomer);
-         
-         newCustomer.addAddress(newAddress);
-         customerService.addCustomer(newCustomer);
-         //model.addAttribute("newcustomer", newCustomer);
-         session.setAttribute("added", newCustomer.getFirstName());
-         return "redirect:/signUpSuccess";
-     }
+//     @RequestMapping(value="/addCustomer", method=RequestMethod.POST)
+//     public String addCustomer(String firstname, String lastname, String email,
+//            String username, String password, String state, String zip, String street, String city, Model model, HttpSession session){
+//         
+//         Customer newCustomer = new Customer(firstname, lastname, email, username, password);
+//         Address newAddress = new Address(state, zip, street, city);
+////         ShoppingCart shoppingCart = new ShoppingCart(newCustomer);
+//         
+//         newCustomer.addAddress(newAddress);
+//         customerService.addCustomer(newCustomer);
+//         //model.addAttribute("newcustomer", newCustomer);
+//         session.setAttribute("added", newCustomer.getFirstName());
+//         return "redirect:/signUpSuccess";
+//     }
      
       @RequestMapping(value="/signUpSuccess",method=RequestMethod.GET)
      public String goToSignUpSuccess(Model model, HttpSession session){

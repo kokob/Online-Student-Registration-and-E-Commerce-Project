@@ -61,4 +61,8 @@ public class FacultyService {
         
     }
     
+    public Faculty getFacultyByUser(String username) {
+        return facultyDAO.getFacultyByUser(username);
+    }
+    
 }

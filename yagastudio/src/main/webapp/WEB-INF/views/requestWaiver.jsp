@@ -12,8 +12,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h3>${noPrerequisiteMessage}</h3>
-        <h3>Thank you ${currentCustomer.firstName}</h3>
+        <p>
+            You must take ${no_prereq_course.prerequisite.courseName}(${no_prereq_course.prerequisite.courseCode}) 
+            before taking ${no_prereq_course.courseName}(${no_prereq_course.courseCode}).Please consider
+            taking ${no_prereq_course.prerequisite.courseName} or 
+            
+            <a href="../applyForWaiver">Request a Waiver</a> 
+            
+            for ${no_prereq_course.prerequisite.courseName}
+        </p>
+        
         <a href="../viewCourses">Back to Courses</a>
+        
     </body>
 </html>

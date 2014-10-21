@@ -74,7 +74,7 @@ public class CustomerDAO {
         Query query = sessionFactory.getCurrentSession().createQuery("Select distinct c from Customer c where c.userName=:username");
          query.setString("username", username);
          
-         Customer customer = (Customer)query.uniqueResult();
+         Customer customer = (Customer)query.list().get(0);
          return customer;
     }
     
