@@ -46,7 +46,7 @@ label{
     margin-bottom: 1.2em;
 }
 input {
-    float: left;
+    /* float: left; */
 }
 
 #header {
@@ -147,7 +147,7 @@ ul, li {
   padding: 0px 6px 0px 6px;
   float: left;
   position: relative;
-  list-style: none;
+  /* list-style: none; */
 }
 #menu-bar a {
   font-weight: bold;
@@ -270,4 +270,16 @@ ul, li {
 }
 * html #menu-bar {
   height: 1%;
+}
+
+
+.search { 
+	font-size: 18px;
+	margin:3px; 
+	/* background: url('./images/search.png') no-repeat 8px 6px; */ 
+}
+input[type=text]{
+	/* color: #49D32B; */
+        font-size: 18px;
+	background-color: white;
 }

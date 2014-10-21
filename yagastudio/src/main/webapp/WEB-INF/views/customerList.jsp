@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>List of customers</h1>
-      
+
         <table class="tg" style="width:70%">
             <tr>
                 <th>First Name</th>

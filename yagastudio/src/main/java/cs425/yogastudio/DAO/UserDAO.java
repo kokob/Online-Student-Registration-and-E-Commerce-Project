@@ -32,14 +32,6 @@ public class UserDAO {
     }
     
     
-     public Customer findCustomerByUserName(String userName){
-        
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
-       
-        criteria.add(Restrictions.eq("userName", userName));
-    
-        return (Customer) criteria.uniqueResult();
-         
-    }
+
     
 }

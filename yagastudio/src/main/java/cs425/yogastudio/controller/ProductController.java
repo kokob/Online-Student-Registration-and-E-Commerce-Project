@@ -7,14 +7,20 @@ package cs425.yogastudio.controller;
 
 import cs425.yogastudio.entity.Admin;
 import cs425.yogastudio.entity.Customer;
+import cs425.yogastudio.entity.OrderLine;
 import cs425.yogastudio.entity.Product;
+import cs425.yogastudio.entity.ShoppingCart;
 import cs425.yogastudio.service.AdminService;
+import cs425.yogastudio.service.CustomerService;
+import cs425.yogastudio.service.OrderLineService;
 import cs425.yogastudio.service.ProductService;
+import cs425.yogastudio.service.ShoppingCartService;
 import cs425.yogastudio.service.UserService;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import static java.lang.Integer.parseInt;
 import java.sql.Blob;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,8 +52,17 @@ public class ProductController {
 //    }
     @Resource
     private ProductService productService;
-      @Resource
+    @Resource
     private AdminService adminService;
+    
+    @Resource
+    private ShoppingCartService shoppingCartService;
+    @Resource
+    private CustomerService customerService;
+    @Resource
+    private OrderLineService orderLineService;
+    
+   
 
     public void setProductService(ProductService productService) {
         this.productService = productService;
@@ -55,7 +70,8 @@ public class ProductController {
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.GET)
     public String goToaddProduct(HttpSession session, Model model) {
-    model.addAttribute("currentCustomer",  session.getAttribute("currentCustomer"));
+    
+        model.addAttribute("currentCustomer",  session.getAttribute("currentCustomer"));
     
            UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
            
@@ -93,6 +109,9 @@ public class ProductController {
             Product c = productService.get(id);
             if (c != null) {
                 OutputStream out = response.getOutputStream();
+                if(c.getProductImage()== null){
+                    System.out.println("###################no image");
+                }
                 out.write(c.getProductImage()); 
                 response.flushBuffer();
             }
@@ -102,36 +121,56 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/addProductSuccess", method = RequestMethod.GET)
-    public String goToAddProductSuccess(Model model, HttpSession session
-    ) {
+    public String goToAddProductSuccess(Model model, HttpSession session ) {
 
         model.addAttribute("added", session.getAttribute("added"));
-//        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//        Customer c1 = (Customer) userService.findCustomerByUserName(userDetails.getUsername());
-//        // Customer c1 = new Customer(userDetails.getUsername(), "wel", "myEmail@yahoo.com", "kobi", "kobipass");
-//        session.setAttribute("currentCustomer", c1);
-//
-//        model.addAttribute("currentCustomer", session.getAttribute("currentCustomer"));
-
+        
+        
+        
         return "addSuccess";
     }
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public String getAll(Model model
-    ) {
-        model.addAttribute("products", productService.getAll());
+    public String getAllProducts(HttpSession session) {
+        
+       session.setAttribute("products", productService.getAll());
 
-        return "productList";
+       return "redirect:/toProductList";
     }
 
     @RequestMapping(value = "/product/delete", method = RequestMethod.POST)
-    public String deleteProduct(int productId
-    ) {
+    public String deleteProduct(int productId) {
 
         Product p1 = productService.get(productId);
         productService.delete(p1);
         return "redirect:/products";
     }
+    
+    @RequestMapping(value = "/searchProducts", method = RequestMethod.POST)
+    public String searchProductsByName(String searchText, HttpSession session ){
+        
+        session.setAttribute("products" , productService.searchProductsByName(searchText));
+        
+        return "redirect:/toProductList";
+    }
+    
+    @RequestMapping(value = "/toProductList", method = RequestMethod.GET)
+    public String getAll(Model model,HttpSession session) {
+        
+        model.addAttribute("products", session.getAttribute("products"));
+        
+       return "productList";
+    }
+    
+    
+    @RequestMapping(value = "/productDetails/{id}", method = RequestMethod.GET)
+    public String goToProductDetail(@PathVariable int id,Model model, HttpSession session) {
 
+      session.setAttribute("currentProduct", productService.get(id));
+      model.addAttribute("currentProduct", session.getAttribute("currentProduct"));
+        
+        return "productDetail";
+    }
+
+    
 }

@@ -29,11 +29,7 @@ public class UserService {
         this.userDAO = userDAO;
     }
     
-   public Customer findCustomerByUserName(String userName){
-    
-        return userDAO.findCustomerByUserName(userName);
-    
-   }
+ 
     
     
 }
