@@ -5,6 +5,7 @@ package cs425.yogastudio.DAO;
 import cs425.yogastudio.entity.Faculty;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Propagation;
@@ -65,6 +66,17 @@ public class FacultyDAO {
     
         return (Faculty) criteria.uniqueResult();
          
+    }
+    
+    public Faculty getFacultyByUser(String username) {
+        Query query = sessionFactory.getCurrentSession().createQuery("Select distinct f from Faculty f where f.userName=:username");
+         query.setString("username", username);
+         
+         List<Faculty> faculties = query.list();
+         
+         //Faculty faculty = (Faculty)query.uniqueResult();
+         //return faculty;
+         return faculties.get(0);
     }
     
     

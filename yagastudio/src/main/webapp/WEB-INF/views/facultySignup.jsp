@@ -18,22 +18,34 @@
             <div id="body">
                 <jsp:include page="/WEB-INF/views/header.jsp"/> 
 
-        <fieldset>   
+        <fieldset>  
+
             <form action="addFaculty" method="post">
                 <div>
-                    
-                          <label> First Name:  </label><input type="text" name="firstname" /> 
-                          <label>Last Name:  </label><input type="text" name="lastname" />                      
-                          <label>Gender:  </label>
-                            <label> <input type="radio" name="gender" value= "M">Male</input> 
-                            <input type="radio" name="gender" value="F">Female</input>   </label> 
-                          <label> User Name:  </label><input type="text" name="username" />                     
-                          <label> Password:  </label><input type="password" name="password" />
-                          <label> Email:  </label><input type="text" name="email" />
-                          <label>  Street:  </label><input type="text" name="street" />
-                          <label>  City:    </label><input type="text" name="city" />  
-                          <label> State:  </label> <input type="text" name="state" />
-                         <label> Zip:   </label><input type="text" name="zip" />
+                    <legend>New faculty signup </legend>
+
+                    <div class="errorClass">
+
+                        <c:if test="${nonUniqueMessage ne null}">
+
+                            <p> ${nonUniqueMessage}</p>
+                            <c:set var="nonUniqueMessage" scope="session" value="${null}"/>
+
+                        </c:if> 
+                    </div>
+
+                    <label> First Name:  </label><input type="text" name="firstname" /> 
+                    <label>Last Name:  </label><input type="text" name="lastname" />                      
+                    <label>Gender:  </label>
+                    <label> <input type="radio" name="gender" value= "M">Male</input> 
+                        <input type="radio" name="gender" value="F">Female</input>   </label> 
+                    <label> User Name:  </label><input type="text" name="username" />                     
+                    <label> Password:  </label><input type="password" name="password" />
+                    <label> Email:  </label><input type="text" name="email" />
+                    <label>  Street:  </label><input type="text" name="street" />
+                    <label>  City:    </label><input type="text" name="city" />  
+                    <label> State:  </label> <input type="text" name="state" />
+                    <label> Zip:   </label><input type="text" name="zip" />
                     <input type="submit" value="Register" />
             </form>
             <label><a href="index.jsp">Cancel</a></label>

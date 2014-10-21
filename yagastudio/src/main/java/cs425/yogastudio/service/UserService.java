@@ -8,6 +8,8 @@ package cs425.yogastudio.service;
 
 import cs425.yogastudio.DAO.UserDAO;
 import cs425.yogastudio.entity.Customer;
+import cs425.yogastudio.entity.User;
+import java.util.List;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +36,9 @@ public class UserService {
         return userDAO.findCustomerByUserName(userName);
     
    }
-    
+
+    public List<User> getUserByUsername(String username) {
+        return userDAO.getUserByUsername(username);
+    }
     
 }

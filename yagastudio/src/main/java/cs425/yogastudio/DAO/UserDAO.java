@@ -7,7 +7,10 @@
 package cs425.yogastudio.DAO;
 
 import cs425.yogastudio.entity.Customer;
+import cs425.yogastudio.entity.User;
+import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Propagation;
@@ -40,6 +43,13 @@ public class UserDAO {
     
         return (Customer) criteria.uniqueResult();
          
+    }
+
+    public List<User> getUserByUsername(String username) {
+        Query query = sessionFactory.getCurrentSession().createQuery("Select distinct u from User u where u.userName=:username");
+         query.setString("username", username);
+         
+         return query.list();
     }
     
 }

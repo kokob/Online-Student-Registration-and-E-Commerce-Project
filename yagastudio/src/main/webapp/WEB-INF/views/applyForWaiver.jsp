@@ -13,18 +13,23 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <fieldset>      
-            <form action="addCustomer" method="post">
-                <div>
-                    <legend>Reason for Waiver Request</legend>           
-                    <label>Reason:</label> <textarea rows="5" cols="50">
- 
-                    </textarea>       
-
-
+        <fieldset> 
+            <legend>Reason for Waiver Request</legend>
+            <form action="applyForWaiver" method="post">
+                
+                     
+                    <label>Course: </label>${currentCourse.courseName}
+                    <br/>
+                    <label>Reason: </label>
+                    <br/>
+                    <textarea name="reason" rows="5" cols="50"></textarea>
+                    <br/>
+                    <label><input type="submit" value="Submit"/></label> 
+                    
             </form>
-            <label><a href="index.jsp">Submit</a><label>
-         <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
-                    </fieldset>    
-                    </body>
-                    </html>
+            
+            <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+            
+        </fieldset>    
+    </body>
+</html>

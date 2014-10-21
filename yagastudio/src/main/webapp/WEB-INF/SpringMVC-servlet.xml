@@ -57,7 +57,8 @@
     <bean id="courseService" class="cs425.yogastudio.service.CourseService">
         <property name="courseDAO" ref="courseDao"/>
     </bean>
-	  <bean id="sectionService" class="cs425.yogastudio.service.SectionService">
+    
+    <bean id="sectionService" class="cs425.yogastudio.service.SectionService">
         <property name="sectionDAO" ref="sectionDao"/>
     </bean>
 	 <bean id="userService" class="cs425.yogastudio.service.UserService">
@@ -65,6 +66,14 @@
     </bean>
         <bean id="waiverService" class="cs425.yogastudio.service.WaiverService">
         <property name="waiverDAO" ref="waiverDao"/>
+    </bean>
+    
+   
+    <bean id="shoppingCartService" class="cs425.yogastudio.service.ShoppingCartService">
+        <property name="shoppingCartDAO" ref="shoppingCartDAO"/>
+    </bean>
+    <bean id="orderLineService" class="cs425.yogastudio.service.OrderLineService">
+        <property name="orderLineDAO" ref="orderLineDAO"/>
     </bean>
     
     <!--DAO beans-->
@@ -94,10 +103,17 @@
     <bean id="roleDao" class="cs425.yogastudio.DAO.RoleDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-	  <bean id="userDao" class="cs425.yogastudio.DAO.UserDAO">
+    <bean id="userDao" class="cs425.yogastudio.DAO.UserDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
         <bean id="waiverDao" class="cs425.yogastudio.DAO.WaiverDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <bean id="shoppingCartDAO" class="cs425.yogastudio.DAO.ShoppingCartDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="orderLineDAO" class="cs425.yogastudio.DAO.OrderLineDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
@@ -147,7 +163,7 @@
                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="connection.pool.size">1</prop>
-                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
                 <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
             </props>
         </property>
@@ -166,7 +182,6 @@
     </bean>
     
 <tx:annotation-driven transaction-manager="txManager" />
-
     
     <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="dataSource" ref="dataSource"/>

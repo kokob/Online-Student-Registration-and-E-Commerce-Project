@@ -1,5 +1,6 @@
 package cs425.yogastudio.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +10,7 @@ import static org.hibernate.type.StandardBasicTypes.BLOB;
 import static org.hibernate.type.StandardBasicTypes.CLOB;
 
 @Entity
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue

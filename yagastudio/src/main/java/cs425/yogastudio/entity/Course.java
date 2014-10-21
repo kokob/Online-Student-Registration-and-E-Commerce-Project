@@ -2,7 +2,7 @@ package cs425.yogastudio.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
+import static java.util.Objects.hash;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -94,6 +94,26 @@ public class Course {
 
         this.sections.add(section);
 
+    }
+    
+    public String toString() {
+        return "" + courseName;
+    }
+    
+    public boolean equals(Object other) {
+        if(other == this){
+            return true;
+        }else{
+            if(other.getClass() != this.getClass()){
+                return false;
+            }
+            return ((Course)other).getId()==this.id;
+        }
+        
+    }
+    
+    public int hashCode() {
+        return hash(id);
     }
 
 }

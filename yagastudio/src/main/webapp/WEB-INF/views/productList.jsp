@@ -4,6 +4,7 @@
     Author     : zeriet
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -18,27 +19,34 @@
         <body>
             <div id="body">
                 <jsp:include page="/WEB-INF/views/header.jsp"/> 
-       
-	<h2>Products available currently in the store</h2>
-	<fieldset>
-	<c:forEach var="myproduct" items="${products}">
-	<fieldset>
-            <ul>
-		<li> ${myproduct.productName}</li>             
-                <p><img src="productpic/${myproduct.id}" width="100" height="100"/></p>
-		<li>Price: ${myproduct.price}</li>
-		<li style="width:150px">Description: ${myproduct.description}</li>		
-		<a href="product/${myproduct.id}">edit</a>
-                 <form action="product/delete?productId=${myproduct.id}" method="post">
-                            <button type="submit">Delete</button>
-                        </form>
-                  </ul>
-	</fieldset>
-	</c:forEach>
-	</fieldset>	
-	
+
+                <h1>Products available currently in the store</h1>
+                <fieldset>
+                    <c:forEach var="myproduct" items="${products}">
+                        <fieldset>
+                            <ul>
+                                
+                                    <li><span><a href="productDetails/${myproduct.id}"> ${myproduct.productName}</a></span> </li> 
+                                           
+                                    <p><img src="productpic/${myproduct.id}" width="100" height="100"/></p>
+                                <li>Price: ${myproduct.price}</li>
+                                <li>Description: ${myproduct.description}</li>	
+
+                                <sec:authorize access="hasRole('ROLE_ADMIN')" >
+                                    <a href="products/${myproduct.id}">edit</a>
+                                    <form action="product/delete?productId=${myproduct.id}" method="post">
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </sec:authorize>
+
+
+
+                            </ul>
+                        </fieldset>
+                    </c:forEach>
+                </fieldset>	
             </div>
-        </body>
+     </body>
         <jsp:include page="/WEB-INF/views/footer.jsp"/> 
     </div>
 </html>

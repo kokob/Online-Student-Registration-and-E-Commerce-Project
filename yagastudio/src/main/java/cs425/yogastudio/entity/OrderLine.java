@@ -14,21 +14,30 @@ public class OrderLine {
 	private int quantity;
     @OneToOne
 	private Product product;// = new ArrayList<Product>();
-	
+
+    
+	@ManyToOne
+        private ShoppingCart shoppingCart;
 	
 
 	public OrderLine() {
 		super();
 	}
 
-	public OrderLine(int quantity, Product product) {
+	public OrderLine(int quantity, Product product, ShoppingCart shoppingCart) {
 		super();
 		this.quantity = quantity;
 		this.product = product;
-		
+		this.shoppingCart= shoppingCart;
 	}
 
-    
+        public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
