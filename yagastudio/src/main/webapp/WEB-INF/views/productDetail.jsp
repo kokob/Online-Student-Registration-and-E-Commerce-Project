@@ -32,14 +32,14 @@
 
                         <li>Description: ${currentProduct.description}</li>
 
+
+
+                        <li> <form action="../addToCart/${currentProduct.id}"  method="post">
+                            <label>Quantity:</label> <input type="number" name="quantity"/><br />
+                            <!--<input type="submit" value="Add to cart"/>-->
+                            <input type="image" src="../resources/cartButton.jpg" alt="Submit Form" />
+                        </form></li>
                     </ul>
-
-                    <form action="../addToCart/${currentProduct.id}"  method="post">
-                        <label>Quantity:</label> <input type="number" name="quantity"/>
-                        <input type="submit" value="Add to cart"/>
-                        <!--<input type="image" src="./resources/cartButton.jpg" alt="Submit Form" />-->
-                    </form>
-
                 </fieldset>
 
 
