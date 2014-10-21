@@ -166,6 +166,27 @@ public class ProductController {
 		return "redirect:/products";
 	}
 
+        
+        
+         @RequestMapping(value = "/searchProducts", method = RequestMethod.POST)
+    public String searchProductsByName(String searchText, HttpSession session ){
+        
+        session.setAttribute("products" , productService.searchProductsByName(searchText));
+        
+        return "redirect:/toProductList";
+    }
+    
+    @RequestMapping(value = "/toProductList", method = RequestMethod.GET)
+    public String getAll(Model model,HttpSession session) {
+        
+        model.addAttribute("products", session.getAttribute("products"));
+        
+       return "productList";
+    }
+    
+    
+    @RequestMapping(value = "/productDetails/{id}", method = RequestMethod.GET)
+    public String goToProductDetail(@PathVariable int id,Model model, HttpSession session) {
       session.setAttribute("currentProduct", productService.get(id));
       model.addAttribute("currentProduct", session.getAttribute("currentProduct"));
         
