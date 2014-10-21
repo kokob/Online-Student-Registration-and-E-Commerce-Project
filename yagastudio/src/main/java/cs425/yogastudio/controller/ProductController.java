@@ -33,6 +33,7 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.rowset.serial.SerialBlob;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
@@ -72,7 +73,7 @@ public class ProductController {
 
         double thePrice = Double.parseDouble(price);
         Product newProduct = new Product(productName, thePrice, description);
-
+        
         if (!file.isEmpty()) {
             try {
                 newProduct.setProductImage(file.getBytes());
@@ -133,5 +134,24 @@ public class ProductController {
         productService.delete(p1);
         return "redirect:/products";
     }
+    
+     @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+    public String update(Model model, @PathVariable int id, HttpSession session) {
+        session.setAttribute("product", productService.get(id));
+        model.addAttribute("product", productService.get(id)); // 
+        
+        return "productUpdate";
+    }
+    
+     @RequestMapping(value="/product/{id}", method=RequestMethod.POST)
+	public String updateProduct(@PathVariable int id, HttpSession session,String productName, 
+             String price, String description) {
+            Product product = productService.get(id);
+            product.setProductName(productName);
+            product.setDescription(description);   
+            product.getProductImage();
+            productService.update(product);
+		return "redirect:/products";
+	}
 
 }

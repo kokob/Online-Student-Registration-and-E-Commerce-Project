@@ -64,9 +64,9 @@ public class CustomerService {
         customerDAO.update(customer);
     }
 
-    public void delete(int customerId) {
+    public void delete(Customer customer) {
 
-        customerDAO.delete(customerId);
+        customerDAO.delete(customer);
     }
     
     public Customer findCustomerByName(String firstname){

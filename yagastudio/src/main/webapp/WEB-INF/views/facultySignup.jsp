@@ -10,14 +10,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="resources/style.css" rel="stylesheet" type="text/css" />
-        <title>Faculty Signup</title>
+        <title>Yoga Studio</title>
+
     </head>
-    <body>
+    <div id="container">
+        <body>
+            <div id="body">
+                <jsp:include page="/WEB-INF/views/header.jsp"/> 
 
         <fieldset>   
             <form action="addFaculty" method="post">
                 <div>
-                    <legend>New faculty signup </legend>
+                    
                           <label> First Name:  </label><input type="text" name="firstname" /> 
                           <label>Last Name:  </label><input type="text" name="lastname" />                      
                           <label>Gender:  </label>
@@ -34,6 +38,8 @@
             </form>
             <label><a href="index.jsp">Cancel</a></label>
         </fieldset>
-    </div>     
-</body>
+            </div>
+        </body>
+        <jsp:include page="/WEB-INF/views/footer.jsp"/> 
+    </div>
 </html>

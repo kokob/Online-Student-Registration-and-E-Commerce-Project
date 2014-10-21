@@ -13,36 +13,31 @@
         <title>JSP Page</title>
     </head>
     <body>
+
+
         <div id="header">
-            <p>Yoga Studio online student registration and E-Commerce</p>
+            <img src="resources/banner2.png"  height="100" alt="logo" />
+            <ul id="menu-bar">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Customers</a>
+
+                </li>
+                <li><a href="#">Products</a>
+
+                </li>
+                <li><a href="about.jsp">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li>  <sec:authorize access="isAnonymous()">
+                        <a href="login.jsp"> Log in</a>    
+                    </sec:authorize>  
+
+                    <sec:authorize access="isAuthenticated()">
+                        <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+                    </sec:authorize></li>
+
+            </ul>
+
         </div>
 
-        <ul id="menu-bar">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Customers</a>
-                <ul>
-                    <li><a href="#">Customers Sub Menu 1</a></li>
-                    <li><a href="#">Customers Sub Menu 2</a></li>
-
-                </ul>
-            </li>
-            <li><a href="#">Products</a>
-                <ul>
-                    <li><a href="#">Products Sub Menu 1</a></li>
-                    <li><a href="#">Products Sub Menu 2</a></li>
-
-                </ul>
-            </li>
-            <li><a href="about.jsp">About</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li>  <sec:authorize access="isAnonymous()">
-                   <a href="login.jsp"> Log in</a>    
-                </sec:authorize>  
-
-             <sec:authorize access="isAuthenticated()">
-                 <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
-                </sec:authorize></li>
-
-        </ul>
     </body>
 </html>

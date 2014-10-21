@@ -36,8 +36,18 @@ public class Customer extends User {
     private String firstName;
     private String lastName;
     private String email;
+      @Column(name = "productpic", columnDefinition = "longblob")
+    private byte[] productImage;
 //    private String userName;
 //    private String password;
+
+    public byte[] getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(byte[] productImage) {
+        this.productImage = productImage;
+    }
 
     private boolean isEnrolled;
     
@@ -50,12 +60,12 @@ public class Customer extends User {
     private Faculty advisor;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Address> addresses;// = new ArrayList<Address>();
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Waiver> waivers;// = new ArrayList<Waiver>();
-    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CourseTaken> coursesTaken;// = new ArrayList<CourseTaken>();
-    @OneToMany(mappedBy = "customer")
-    private List<Order> orders;// = new ArrayList<Order>();
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+    private List<Order> orders ;//= new ArrayList<Order>();
     @OneToOne(mappedBy = "customer" , cascade = CascadeType.ALL)
     private ShoppingCart shoppingCart;
     

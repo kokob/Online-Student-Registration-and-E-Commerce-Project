@@ -1,12 +1,14 @@
 package cs425.yogastudio.controller;
 
 import cs425.yogastudio.entity.Address;
+
 import cs425.yogastudio.entity.Faculty;
 import cs425.yogastudio.service.FacultyService;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -49,12 +51,25 @@ public class FacultyController {
 
         return "facultiesList";
     }
+  
+    @RequestMapping(value = "/faculty/{id}", method = RequestMethod.GET)
+    public String update(Model model, @PathVariable int id, HttpSession session) {
+        session.setAttribute("faculty", facultyService.get(id));
+        model.addAttribute("faculty", facultyService.get(id)); // 
 
-    @RequestMapping(value = "/faculty/delete", method = RequestMethod.POST)
-    public String deleteFaculty(int facultyId) {
+        return "facultyUpdate";
+    }
 
-        Faculty f1 = facultyService.get(facultyId);
-        facultyService.delete(f1);
+    @RequestMapping(value = "/faculty/{id}", method = RequestMethod.POST)
+    public String updateFaculty(@PathVariable int id, HttpSession session, Faculty faculty,
+            String firstname, String lastname, String email, String username) {
+        
+        faculty.setFirstName(firstname);
+        faculty.setLastName(lastname);
+        faculty.setEmail(email);
+        faculty.setUserName(username);
+        
+       facultyService.update(faculty);
         return "redirect:/faculties";
     }
     

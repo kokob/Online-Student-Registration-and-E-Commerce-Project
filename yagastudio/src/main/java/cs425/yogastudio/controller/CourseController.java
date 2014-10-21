@@ -67,25 +67,34 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/course/{id}", method = RequestMethod.GET)
-    public String update(Model model, @PathVariable int id, HttpSession session) {
+    public String update(Course course, Model model, @PathVariable int id, HttpSession session) {
+
         session.setAttribute("course", courseService.get(id));
-        model.addAttribute("course", courseService.get(id)); // course.id already set by binding
-        
+        model.addAttribute("course", courseService.get(id)); 
+        //model.addAttribute("allcourses", courseService.getAll());
+        //session.setAttribute("allcourses", courseService.get(id));
+
         return "courseUpdate";
     }
-    @RequestMapping(value="/course/{id}", method=RequestMethod.POST)
-	public String updateCourse(@PathVariable int id, HttpSession session) {            
-		courseService.update((Course)session.getAttribute("course")); // course.id already set by binding 
-		return "redirect:/courses";
-	}
-        
-        @RequestMapping(value="/course/delete", method=RequestMethod.POST)
-	public String deleteCourse(int courseId) {
-            
-                Course c1=courseService.get(courseId);
-		courseService.delete(c1);
-		return "redirect:/courses";
-	}
+
+    @RequestMapping(value = "/course/{id}", method = RequestMethod.POST)
+    public String updateCourse(Course course, @PathVariable int id, HttpSession session, String name, String code, String credit, int prereq_id) {
+        course.setCourseCode(code);
+        int theCredit2 = parseInt(credit);        
+        course.setCourseCredit(theCredit2);
+        course.setCourseName(name);
+        course.setPrerequisite(courseService.get(prereq_id));
+        courseService.update(course); 
+        return "redirect:/courses";
+    }
+
+    @RequestMapping(value = "/course/delete", method = RequestMethod.POST)
+    public String deleteCourse(int courseId) {
+
+        Course c1 = courseService.get(courseId);
+        courseService.delete(c1);
+        return "redirect:/courses";
+    }
 //        
 //       @RequestMapping(value="/course/{id}", method=RequestMethod.POST)
 //        public String updateCourse(String name, String code, String credit, HttpSession session,@PathVariable int id) {
@@ -96,7 +105,6 @@ public class CourseController {
 //        return "redirect:/courses";
 //    }
 //        
-   
 
     @RequestMapping(value = "/viewCourses", method = RequestMethod.GET)
     public String goViewCourses(Model model, HttpSession session) {
@@ -118,7 +126,6 @@ public class CourseController {
 
         return "courseDetail";
     }
-   
 
     @RequestMapping(value = "/createSection", method = RequestMethod.GET)
     public String toCreateSection(Model model, HttpSession session) {

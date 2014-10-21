@@ -10,13 +10,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link href="resources/style.css" rel="stylesheet" type="text/css" />
-        <title>JSP Page</title>
+        <link href="resources/style.css" rel="stylesheet" type="text/css" />
+        <title>Yoga Studio</title>
+
     </head>
-    <body>
+    <div id="container">
+        <body>
+            <div id="body">
+                <jsp:include page="/WEB-INF/views/header.jsp"/> 
         <h3>Create a Section</h3>
         <fieldset>
-            <form action="createSection" method="POST">        
+            <form action="createSection" method="POST" class = "basic-grey" style="width:300px">        
                 <label>Course: 
                 <select name="selectedcourse">
                     <c:forEach var="course" items="${allcourses}" >
@@ -40,5 +44,8 @@
         </form>
         
         </fieldset>
-    </body>
+    </div>
+        </body>
+        <jsp:include page="/WEB-INF/views/footer.jsp"/> 
+    </div>
 </html>

@@ -47,8 +47,8 @@ public class SectionDAO {
         sessionFactory.getCurrentSession().update(section);
     }
 
-    public void delete(int sectionId) {
-        sessionFactory.getCurrentSession().delete(sectionId);
+    public void delete(Section section) {
+        sessionFactory.getCurrentSession().delete(section);
     }
     
 }

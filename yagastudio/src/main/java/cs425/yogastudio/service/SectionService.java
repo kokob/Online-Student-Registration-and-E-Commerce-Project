@@ -45,9 +45,9 @@ public class SectionService {
         sectionDAO.update(section);
     }
 
-    public void delete(int sectionId) {
+    public void delete(Section section) {
 
-        sectionDAO.delete(sectionId);
+        sectionDAO.delete(section);
     }
     
 }

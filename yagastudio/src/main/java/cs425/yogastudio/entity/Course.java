@@ -2,6 +2,7 @@ package cs425.yogastudio.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Course {
 //    @OneToMany
 //    @JoinTable(name = "Course_Prerequisite")
 //	private List<Course> prerequisite;// = new ArrayList<Course>();
-    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     private List<Section> sections;// = new ArrayList<Section>();
 
     public Course() {

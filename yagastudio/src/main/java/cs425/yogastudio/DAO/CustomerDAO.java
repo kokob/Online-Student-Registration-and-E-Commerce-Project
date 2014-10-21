@@ -54,12 +54,12 @@ public class CustomerDAO {
     }
 
     public void update(Customer customer) {
-        sessionFactory.getCurrentSession().update(customer);
+        sessionFactory.getCurrentSession().saveOrUpdate(customer);
     }
 
    
-    public void delete(int customerId) {
-        sessionFactory.getCurrentSession().delete(customerId);
+    public void delete(Customer customer) {
+        sessionFactory.getCurrentSession().delete(customer);
     }
     
     public Customer findCustomerByName(String firstName){

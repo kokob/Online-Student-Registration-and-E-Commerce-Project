@@ -52,7 +52,7 @@
                 <user name="bereket" password="2222" authorities="ROLE_FACULTY" />
                 <user name="kokob" password="3333" authorities="ROLE_CUSTOMER" />
                 <user name="abel" password="4444" authorities="ROLE_CUSTOMER" />
-                <user name="zeriet" password="1111" authorities="ROLE_ADMIN,ROLE_CUSTOMER,ROLE_CUSTOMER" />
+                <user name="zeriet" password="1111" authorities="ROLE_ADMIN,ROLE_FACULTY,ROLE_CUSTOMER" />
             </user-service>
         </authentication-provider>
         

@@ -1,7 +1,7 @@
 <%-- 
     Document   : customersList
     Created on : Oct 17, 2014, 7:08:43 PM
-    Author     : zeriet
+    Autdor     : zeriet
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,29 +11,37 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="resources/style.css" rel="stylesheet" type="text/css" />
-        <title>JSP Page</title>
+        <title>Yoga Studio</title>
+
     </head>
-    <body>
-        <h1>List of customers</h1>
-      
-        <table class="tg" style="width:70%">
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Operation</th>
-            </tr>
-            <c:forEach var="customer" items="${customers}">               
-                <tr>
-                    <th class="tg-hv32">${customer.firstName}</th>
-                    <th class="tg-bsv2">${customer.lastName}</th>
-                    <th class="tg-bsv2">${customer.email}</th>
-                    <th class="tg-bsv2"> <a href="customer/${customer.id}">edit</a>
-                <form action="customer/delete?customerId=${customer.id}" method="post">
-                    <button type="submit">Delete</button>
-                </form></th>
-        </tr>
-    </c:forEach>
-</table>
-</body>
+    <div id="container">
+        <body>
+            <div id="body">
+                <jsp:include page="/WEB-INF/views/header.jsp"/> 
+                <h1>List of customers</h1>
+
+                <table class="CSSTableGenerator" style="width:70%">
+                    <tr>
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>Email</td>
+                        <td>Profile image</td>
+                        <td>Operation</td>
+                    </tr>
+                    <c:forEach var="customer" items="${customers}">               
+                        <tr>
+                            <td class="tg-hv32">${customer.firstName}</td>
+                            <td class="tg-bsv2">${customer.lastName}</td>
+                            <td class="tg-bsv2">${customer.email}</td>
+                            <td class="tg-bsv2"> <img src="customerpic/${customer.id}" /></td>
+                            <td class="tg-bsv2"> <a href="customer/${customer.id}">edit</a>
+                            </td>
+
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+        </body>
+        <jsp:include page="/WEB-INF/views/footer.jsp"/> 
+    </div>
 </html>
