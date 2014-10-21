@@ -10,15 +10,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="resources/style.css" rel="stylesheet" type="text/css" />
+
         <title>JSP Page</title>
     </head>
     <body>
         <div id="header">
             <p>Yoga Studio online student registration and E-Commerce</p>
+            <div id="welcome">
+                <sec:authorize access="isAuthenticated()">
+                    <p></p>
+                </sec:authorize>                
+            </div>
         </div>
 
         <ul id="menu-bar">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="index.jsp">Home</a></li>
             <li><a href="#">Customers</a>
                 <ul>
                     <li><a href="#">Customers Sub Menu 1</a></li>
@@ -35,14 +42,19 @@
             </li>
             <li><a href="about.jsp">About</a></li>
             <li><a href="#">Contact Us</a></li>
+
             <li>  <sec:authorize access="isAnonymous()">
-                    <p> <a href="login.jsp"> Log in</a></p>    
+                    <a href="login.jsp"> Log in</a>    
                 </sec:authorize>  
 
-             <sec:authorize access="isAuthenticated()">
+                <sec:authorize access="isAuthenticated()">
                     <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
                 </sec:authorize></li>
-
+            <li> <div class="lighter">
+                    <form action="searchProducts" method="post">
+                        <span><input type="text" name="searchText" class="search square"><input type="submit" class="search square" value="Search"></span>
+                    </form>
+                </div>    </li>
         </ul>
     </body>
 </html>

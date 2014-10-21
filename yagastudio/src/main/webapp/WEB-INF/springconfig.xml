@@ -14,24 +14,37 @@
     <beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" /> 
     
     <!--<http pattern="views/home.jsp" security="none" />-->
+    <global-method-security pre-post-annotations="enabled"/>
      
-     <http>
+    <!--<http>-->
+    <http>
+        
+         <access-denied-handler ref="myAccessDeniedHandler" />
     
         <!---->        
         <!--<intercept-url pattern="/**" access="isAuthenticated()"/>-->
 
         <intercept-url pattern="/addProduct" method="GET" access="ROLE_ADMIN" />
-        <intercept-url pattern="/addCourse" method="GET" access="ROLE_ADMIN" />
+        <intercept-url pattern="/addCourse" method="GET" access="ROLE_FACULTY" />
         <intercept-url pattern="/addCustomer" method="GET" access="ROLE_ADMIN" />
+        <intercept-url pattern="/addToCart/**" method="POST" access="ROLE_CUSTOMER" />
         
         <!--default-target-url="/login"-->
         
-        <form-login  login-page="/login.jsp" />
+        <form-login  login-page="/login.jsp" authentication-failure-url = "/login.jsp?login_error=1"/>
         <logout delete-cookies="true" invalidate-session="true" logout-success-url="/index.jsp" />
         
 
     
     </http>
+    
+    
+    <beans:bean id="myAccessDeniedHandler" class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+    
+        <beans:property name="errorPage" value="/index.jsp" />
+    
+    </beans:bean>
+
     
     <authentication-manager>
         <authentication-provider>
@@ -40,7 +53,7 @@
                 <user name="bereket" password="2222" authorities="ROLE_FACULTY" />
                 <user name="kokob" password="3333" authorities="ROLE_CUSTOMER" />
                 <user name="abel" password="4444" authorities="ROLE_CUSTOMER" />
-                <user name="zeriet" password="1111" authorities="ROLE_ADMIN,ROLE_CUSTOMER,ROLE_CUSTOMER" />
+                <user name="zeriet" password="1111" authorities="ROLE_ADMIN,ROLE_FACULTY,ROLE_CUSTOMER" />
             </user-service>
         </authentication-provider>
         
@@ -65,6 +78,19 @@
        
             <jdbc-user-service 
                 data-source-ref="dataSource" 
+                
+                users-by-username-query="select username,password from user where username=?"
+                
+                
+                authorities-by-username-query="select roleName from usersandroles where username =?  "  />   
+            
+            
+        </authentication-provider>-->
+        
+<!--         <authentication-provider>
+       
+            <jdbc-user-service 
+                data-source-ref="dataSource" 
                 users-by-username-query="select username,password, active=1 enabled from credential
                                              where username=?" 
                 authorities-by-username-query="select username, role as authority from credential 
@@ -72,6 +98,52 @@
         </authentication-provider>-->
         
     </authentication-manager>
+    
+    
+      <beans:bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <beans:property name="dataSource" ref="dataSource"/>
+        <beans:property name="hibernateProperties" ref="hibernateProperties" />
+        <beans:property name="annotatedClasses">
+            <beans:list>
+                <beans:value>cs425.yogastudio.entity.Address</beans:value>
+                <beans:value>cs425.yogastudio.entity.Course</beans:value>
+                <beans:value>cs425.yogastudio.entity.CourseTaken</beans:value>
+                <beans:value>cs425.yogastudio.entity.Customer</beans:value>
+                <beans:value>cs425.yogastudio.entity.Faculty</beans:value>
+                <beans:value>cs425.yogastudio.entity.Order</beans:value>
+                <beans:value>cs425.yogastudio.entity.OrderLine</beans:value>
+                <beans:value>cs425.yogastudio.entity.Product</beans:value>
+                <beans:value>cs425.yogastudio.entity.Section</beans:value>
+                <beans:value>cs425.yogastudio.entity.ShoppingCart</beans:value>
+                <beans:value>cs425.yogastudio.entity.Waiver</beans:value>
+                <beans:value>cs425.yogastudio.entity.Admin</beans:value>
+                <beans:value>cs425.yogastudio.entity.Role</beans:value>
+                <beans:value>cs425.yogastudio.entity.User</beans:value>
+                
+            
+                
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+    
+        <beans:bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <beans:property name="properties">
+            <beans:props>
+               <beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
+                <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</beans:prop>
+                <beans:prop key="connection.pool.size">1</beans:prop>
+                <!--<prop key="hibernate.show_sql">true</prop>-->
+                <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
+            </beans:props>
+        </beans:property>
+    </beans:bean>
+    
+     <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <beans:property name="url" value="jdbc:mysql://localhost/cs544"/>
+        <beans:property name="username" value="root"/>
+        <beans:property name="password" value="root"/>
+    </beans:bean>
 
  
 </beans:beans>

@@ -2,8 +2,10 @@ package cs425.yogastudio.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -18,9 +20,11 @@ public class ShoppingCart {
 
     private double totalPrice;
     @OneToOne
-    private Customer customer;
-    @OneToMany
-    private List<OrderLine> orderLines;// = new ArrayList<OrderLine>();
+	private Customer customer;
+    @OneToMany(cascade = CascadeType.ALL)
+	private List<OrderLine> orderLines;// = new ArrayList<OrderLine>();
+	
+	
 
     public ShoppingCart() {
         super();

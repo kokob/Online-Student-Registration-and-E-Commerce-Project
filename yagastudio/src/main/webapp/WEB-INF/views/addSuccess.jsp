@@ -13,7 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-       <h1>mr. ${currentCustomer.lastName} You have successfully added ${added}</h1>
+       <h1>mr. ${currentAdmin.lastName} You have successfully added ${added}</h1>
         <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+        <a href="index.jsp">Cancel</a>
     </body>
 </html>

@@ -12,8 +12,10 @@
         <link href="resources/style.css" rel="stylesheet" type="text/css" />
         <title>JSP Page</title>
     </head>
+       <div id="container">
     <body>
-
+            <div id="body">
+                 <jsp:include page="/WEB-INF/views/header.jsp"/> 
         <h1>List of courses</h1>
         <fieldset>
             <c:forEach var="course" items="${courses}">
@@ -35,5 +37,8 @@
         <label><a href="index.jsp">Cancel</a></label>
    
         <!--	<a href="addCar.html"> Add a Car</a>-->
+     </div>
     </body>
+     <jsp:include page="/WEB-INF/views/footer.jsp"/> 
+</div>
 </html>

@@ -15,22 +15,25 @@
     <body>
 
         <h1>List of faculties</h1>
-        <fieldset>
-            <c:forEach var="faculty" items="${faculties}">
-                <fieldset>
-                    <ul>
-                      
-                        <li>First Name${faculty.firstName}</strong></li>              
-                        <li>Last Name: ${faculty.lastName}</li>
-                        <li>Email:${faculty.email}</li>
-                        
-                        <a href="faculty/${faculty.id}">edit</a>
-                        <form action="faculty/delete?facultyId=${faculty.id}" method="post">
-                            <button type="submit">Delete</button>
-                        </form>
-                    </ul>
-                </fieldset>
-            </c:forEach>
-        </fieldset>
+      
+        <table class="tg" style="width:70%">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Operation</th>
+            </tr>
+            <c:forEach var="faculty" items="${faculties}">               
+                <tr>
+                    <th class="tg-hv32">${faculty.firstName}</th>
+                    <th class="tg-bsv2">${faculty.lastName}</th>
+                    <th class="tg-bsv2">${faculty.email}</th>
+                    <th class="tg-bsv2"> <a href="faculty/${faculty.id}">edit</a>
+                <form action="faculty/delete?facultyId=${faculty.id}" method="post">
+                    <button type="submit">Delete</button>
+                </form></th>
+        </tr>
+    </c:forEach>
+</t
     </body>
 </html>

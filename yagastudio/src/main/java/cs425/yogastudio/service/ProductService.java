@@ -52,4 +52,9 @@ public class ProductService {
 
         productDAO.delete(product);
     }
+
+    public List<Product> searchProductsByName(String searchText) {
+       
+        return productDAO.searchProductsByName(searchText);    
+    }
 }

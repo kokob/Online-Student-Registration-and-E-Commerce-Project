@@ -17,5 +17,7 @@
         <h1>Sign up success</h1>
         
         <p>welcome ${added}</p>
+        
+        <label><a href="index.jsp">Cancel</a></label>
     </body>
 </html>

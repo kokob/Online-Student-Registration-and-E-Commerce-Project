@@ -19,20 +19,52 @@
 
     </head>
     <body>
-        
-    <p>Add Product for mr. ${currentCustomer.lastName}</p>
+        <div class="error">
+
+           <c:if test="${not errorMessage eq null}">
+                
+                    <p> ${errorMessage}</p>
+             
+            </c:if> 
+        </div>
+
+        <p>Add Product for mr. ${currentCustomer.lastName}</p>
         <fieldset>
-            <form action="addProduct" method="post">
+            <form:form action="addProduct" method="post" enctype="multipart/form-data">
                 <div>
-                    <legend>New product</legend>
-                    <label>Product Name:</label> <input name="productName" type ="text"/>
-                    <label>Price:</label> <input name="price" type ="text"/>
-                    <label>Description:</label> <input name="description" type ="text"/>
-                    <label><input type="submit" value="Add Product" /></label>
-                </div>
-            </form>
-  <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
-          <label><a href="index.jsp">Cancel</a></label>
+                    <table>
+                        <tr>
+                            <!--<legend>New product</legend>-->
+                            <td>Product Name:</td>
+                            <td> <input name="productName" type ="text"/></td>
+                        </tr> 
+                        <tr>
+                            <td>Unit Price:</td> <td><input name="price" type ="text"/></td>
+                        </tr> 
+                        <tr>
+                            <td>Quantity:</td> <td><input name="quantity:" type ="text"/></td>
+                        </tr>
+                        <tr>
+                            <!--<td>Description:</td> <td><textarea name="description:"cols="30" rows="4"></textarea></td>-->
+                            <td>Description: </td> <td><input name="description:" type ="text"/></td>
+                        </tr> 
+                        <tr>
+                        <tr>
+                            <td>Image</td> <td><input type="file" name="file" id="file"></input></td>
+                            </tr>
+                            <tr>
+<!--                                <td>
+                                    <input type="submit" value="Add Image"/>
+                                </td>-->
+                            </tr>
+                            <td><input type="submit" value="Add Product" /></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </for  </form:form>
+                <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+            <td><a href="index.jsp">Cancel</a></td>
         </fieldset>
     </body>
 </html>

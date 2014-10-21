@@ -40,12 +40,7 @@
                 </div>
 
             </form>
-            <label><a href="index.jsp">Cancel</a><label>
-
-
-                    </fieldset> 
-
-
-
-                    </body>
-                    </html>
+            <label><a href="index.jsp">Cancel</a></label>
+        </fieldset>          
+</body>
+</html>

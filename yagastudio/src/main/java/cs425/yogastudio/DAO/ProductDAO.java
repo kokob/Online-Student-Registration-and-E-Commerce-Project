@@ -7,6 +7,7 @@ package cs425.yogastudio.DAO;
 
 import cs425.yogastudio.entity.Product;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,6 +50,15 @@ public class ProductDAO {
 
     public void delete(Product product) {
         sessionFactory.getCurrentSession().delete(product);
+    }
+
+    public List<Product> searchProductsByName(String searchText) {
+        
+       Query query = sessionFactory.getCurrentSession().createQuery("select distinct p from Product p where p.productName like :searchText");
+       query.setString("searchText", searchText+"%");
+       List<Product> products = query.list();
+       return products;
+    
     }
 
 }
