@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
+             xmlns:beans="http://www.springframework.org/schema/beans" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
@@ -19,7 +19,7 @@
     <!--<http>-->
     <http>
         
-         <access-denied-handler ref="myAccessDeniedHandler" />
+        <access-denied-handler ref="myAccessDeniedHandler" />
     
         <!---->        
         <!--<intercept-url pattern="/**" access="isAuthenticated()"/>-->
@@ -55,50 +55,20 @@
             </user-service>
         </authentication-provider>
         
-<!--         <authentication-provider>
-            <password-encoder hash="bcrypt" />
-            <jdbc-user-service 
-                data-source-ref="dataSource"  
-                           users-by-username-query="select userName, passWord, 1 enabled from reader where username=?"
-            
-                          authorities-by-username-query="
-            select u.userName, r.roleName from Reader u,
-            Reader_Roles ur,role r where u.id = ur.reader_id and r.id=ur.authority_id
-            and u.userName =?"  />   
-        </authentication-provider>-->
-        
-        
-        
- <!--       this tag has to be inside the authentication-provider below   <password-encoder hash="bcrypt" />   -->
- 
- 
-<!--         <authentication-provider>
-       
-            <jdbc-user-service 
-                data-source-ref="dataSource" 
+        <authentication-provider>
+            <!--<password-encoder hash="plaintext" />-->
+            <jdbc-user-service data-source-ref="dataSource"
+                               users-by-username-query="select username,password,1 enabled from user where username=?"
+                               authorities-by-username-query = "select username,roleName from role,usersandroles,user 
+where role.id=usersandroles.role_Id and user.USER_ID=usersandroles.user_id and user.username =?"
+            />
                 
-                users-by-username-query="select username,password from user where username=?"
-                
-                
-                authorities-by-username-query="select roleName from usersandroles where username =?  "  />   
-            
-            
-        </authentication-provider>-->
-        
-<!--         <authentication-provider>
-       
-            <jdbc-user-service 
-                data-source-ref="dataSource" 
-                users-by-username-query="select username,password, active=1 enabled from credential
-                                             where username=?" 
-                authorities-by-username-query="select username, role as authority from credential 
-                                                where username=?"  />   
-        </authentication-provider>-->
+        </authentication-provider>
         
     </authentication-manager>
     
     
-      <beans:bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <beans:bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <beans:property name="dataSource" ref="dataSource"/>
         <beans:property name="hibernateProperties" ref="hibernateProperties" />
         <beans:property name="annotatedClasses">
@@ -124,10 +94,10 @@
         </beans:property>
     </beans:bean>
     
-        <beans:bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <beans:bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <beans:property name="properties">
             <beans:props>
-               <beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
+                <beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
                 <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</beans:prop>
                 <beans:prop key="connection.pool.size">1</beans:prop>
                 <!--<prop key="hibernate.show_sql">true</prop>-->
@@ -136,9 +106,9 @@
         </beans:property>
     </beans:bean>
     
-     <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <beans:property name="url" value="jdbc:mysql://localhost/cs544"/>
+        <beans:property name="url" value="jdbc:mysql://localhost/cs425"/>
         <beans:property name="username" value="root"/>
         <beans:property name="password" value="root"/>
     </beans:bean>

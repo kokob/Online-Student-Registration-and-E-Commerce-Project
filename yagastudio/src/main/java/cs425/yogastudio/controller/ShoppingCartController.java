@@ -85,7 +85,6 @@ public class ShoppingCartController {
      @RequestMapping(value = "/checkOut", method = RequestMethod.POST)
     public String checkingOut(HttpSession session) {
         
-        String view = "redirect:/checkOutSuccess";
         
         UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Customer c1 = (Customer)customerService.getCustomerByUser(userDetails.getUsername());
@@ -107,10 +106,12 @@ public class ShoppingCartController {
             session.setAttribute("currentOrder", newOrder);
             session.setAttribute("currentOrderPrice", sc1.getTotalPrice());
             
+            sc1.setTotalPrice(0.0);
+            
+            shoppingCartService.update(sc1);
             
             
-            
-        return view;
+        return "redirect:/checkOutSuccess";
         }
      
     }
@@ -127,6 +128,24 @@ public class ShoppingCartController {
         
         
         return "checkOutFailure";
+    }
+   
+    @RequestMapping(value = "viewShoppingCart", method = RequestMethod.GET)
+    public String goToShoppingCart(HttpSession session, Model model){
+        
+        UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Customer c1 = (Customer)customerService.getCustomerByUser(userDetails.getUsername());
+        
+        ShoppingCart sc1 = c1.getShoppingCart();
+        
+        
+        List<OrderLine> currentOrderLines = orderLineService.getAllByCustomerId(c1.getId());
+        
+        session.setAttribute("currentOrderLines", currentOrderLines);
+        
+        session.setAttribute("currentShoppingCartPrice",sc1.getTotalPrice() );
+         
+        return "cartDetail";
     }
     
 

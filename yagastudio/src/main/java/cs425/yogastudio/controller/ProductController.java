@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import java.sql.Blob;
 import java.util.logging.Level;
@@ -159,7 +160,7 @@ public class ProductController {
 	public String updateProduct(@PathVariable int id, HttpSession session,String productName, 
             String price, String description) {
             Product product = productService.get(id);
-            int thePrice = parseInt(price);
+            double thePrice = parseDouble(price);
             product.setPrice(thePrice);
             product.setProductName(productName);
             product.setDescription(description);   

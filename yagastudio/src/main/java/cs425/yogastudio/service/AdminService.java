@@ -51,6 +51,7 @@ public class AdminService {
         Role roleAdmin = roleDAO.getRoleByRoleName("ROLE_ADMIN");
         Role roleCustomer = roleDAO.getRoleByRoleName("ROLE_CUSTOMER");
         Role roleFaculty = roleDAO.getRoleByRoleName("ROLE_FACULTY");
+        
         admin.getRoles().add(roleAdmin);
         admin.getRoles().add(roleCustomer);
         admin.getRoles().add(roleFaculty);

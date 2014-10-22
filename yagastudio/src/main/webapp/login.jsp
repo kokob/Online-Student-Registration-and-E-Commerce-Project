@@ -40,7 +40,7 @@
                             <td><input name="submit" type="submit" value="LogIn" /></td>
                         </tr>
                     </table>
-                                        <a href="customerSignup"> Customer sign up</a>
+                             <a href="customerSignup"> Customer sign up</a>
 
                 </form>
             </div>

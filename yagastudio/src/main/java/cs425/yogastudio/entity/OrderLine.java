@@ -1,5 +1,6 @@
 package cs425.yogastudio.entity;
 import java.util.ArrayList;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

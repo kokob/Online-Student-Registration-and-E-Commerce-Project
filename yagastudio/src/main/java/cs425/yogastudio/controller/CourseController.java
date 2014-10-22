@@ -83,12 +83,17 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/course/{id}", method = RequestMethod.POST)
-    public String updateCourse(Course course, @PathVariable int id, HttpSession session, String name, String code, String credit, int prereq_id) {
+    public String updateCourse(Course course, @PathVariable int id, HttpSession session, String name, String code, String credit, Integer prereq_id) {
         course.setCourseCode(code);
         int theCredit2 = parseInt(credit);        
         course.setCourseCredit(theCredit2);
         course.setCourseName(name);
-        course.setPrerequisite(courseService.get(prereq_id));
+        if(prereq_id == null) {
+            course.setPrerequisite(null);
+        }else{
+            course.setPrerequisite(courseService.get(prereq_id));
+        }
+        //course.setPrerequisite(courseService.get(prereq_id));
         courseService.update(course); 
         return "redirect:/courses";
     }

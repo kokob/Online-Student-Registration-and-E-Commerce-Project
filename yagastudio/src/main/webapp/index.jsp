@@ -38,6 +38,9 @@
                 <sec:authorize access="hasRole('ROLE_FACULTY')" >
                     <p> <a href="viewWaivers"> View my waivers</a></p>
                 </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_CUSTOMER')" >
+                    <p> <a href="viewShoppingCart"> View my Shopping Cart</a></p>
+                </sec:authorize>
 
                 <sec:authorize access="isAnonymous()">
                     <p> <a href="login.jsp"> Log in</a></p>    

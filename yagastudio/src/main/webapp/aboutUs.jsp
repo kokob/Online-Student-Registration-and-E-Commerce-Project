@@ -19,6 +19,10 @@
 
 <fieldset >
                 <p> This software Engineering project is done by a group of four students from Mahirishi University of Management</p>
+               <p><img src="resources/zeriet.jpg"  height="100" alt="logo" />
+               <img src="resources/bereket.jpg"  height="100" alt="logo" />              
+               <img src="resources/kokob.JPG"  height="100" alt="logo" />
+               <img src="resources/abel.JPG"  height="100" alt="abel" /></p>
                 <p>The problem description of the project follows</p>
             <h1>  Problem Description – Yoga Studio Project  </h1>
             <p>
@@ -45,6 +49,7 @@
                 <li>We have a catalog of Yoga related products. Our customers should be able to 
                     purchase them on-line. </li> 
             </ol>
+             <p><img src="resources/banner2.png"  height="100" alt="logo" /></p>
 
             
 </fieldset>
