@@ -10,11 +10,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="resources/style.css" rel="stylesheet" type="text/css" />
+        <title>Yoga Studio</title>
+
     </head>
-    <body>
-       <h1>mr. ${currentAdmin.lastName} You have successfully added ${added}</h1>
-        <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
-        <a href="index.jsp">Cancel</a>
-    </body>
+    <div id="container">
+        <body>
+            <div id="body">
+                <jsp:include page="/WEB-INF/views/header.jsp"/> 
+                <h1>You have successfully added ${added}</h1>
+                <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+                <a href="index.jsp">Cancel</a>
+            </div>
+        </body>
+        <jsp:include page="/WEB-INF/views/footer.jsp"/> 
+    </div>
 </html>

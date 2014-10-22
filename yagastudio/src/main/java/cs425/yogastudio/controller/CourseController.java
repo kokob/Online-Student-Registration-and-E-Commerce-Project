@@ -37,10 +37,15 @@ public class CourseController {
     private FacultyService facultyService;
 
     @RequestMapping(value = "/addCourse", method = RequestMethod.POST)
-    public String addingCourse(String name, String code, String credit, int prereq_id, HttpSession session) {
+    public String addingCourse(String name, String code, String credit, Integer prereq_id, HttpSession session) {
         int theCredit = parseInt(credit);
         Course course = new Course(name, code, theCredit);
-        course.setPrerequisite(courseService.get(prereq_id));
+        if(prereq_id == null) {
+            course.setPrerequisite(null);
+        }else{
+            course.setPrerequisite(courseService.get(prereq_id));
+        }
+        
         courseService.addCourse(course);
         session.setAttribute("added", course.getCourseName());
         return "redirect:/addsuccess";

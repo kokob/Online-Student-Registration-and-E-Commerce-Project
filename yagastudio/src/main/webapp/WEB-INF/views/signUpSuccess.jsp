@@ -11,13 +11,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="resources/style.css" rel="stylesheet" type="text/css" />
-        <title>Success Page</title>
+        <title>Yoga Studio</title>
+
     </head>
-    <body>
-        <h1>Sign up success</h1>
-        
-        <p>welcome ${added}</p>
-        
-        <label><a href="index.jsp">Cancel</a></label>
-    </body>
+    <div id="container">
+        <body>
+            <div id="body">
+                <jsp:include page="/WEB-INF/views/header.jsp"/> 
+                <h1>Sign up success</h1>
+
+                <p>welcome ${added}</p>
+
+                <label><a href="index.jsp">Cancel</a></label>
+            </div>
+        </body>
+        <jsp:include page="/WEB-INF/views/footer.jsp"/> 
+    </div>
 </html>

@@ -34,11 +34,9 @@
                                     <td> <input name="productName" type ="text"/></td>
                                 </tr> 
                                 <tr>
-                                    <td>Unit Price:</td> <td><input name="price" type ="text"/></td>
+                                    <td>Price:</td> <td><input name="price" type ="text"/></td>
                                 </tr> 
-                                <tr>
-                                    <td>Quantity:</td> <td><input name="quantity:" type ="text"/></td>
-                                </tr>
+                             
                                 <tr>
                                     <td>Description:<td><p><textarea name="description" cols="25" rows="4"></textarea></td>
                                 </tr> 
@@ -59,7 +57,9 @@
                         </for  </form:form>
                     <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
                     <td><a href="index.jsp">Cancel</a></td>
-                </fieldset></div>
+                </fieldset>
+            </div>
         </body>
         <jsp:include page="/WEB-INF/views/footer.jsp"/> 
     </div>
+</html>

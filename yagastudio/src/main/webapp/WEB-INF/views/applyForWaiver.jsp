@@ -10,14 +10,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="resources/style.css" rel="stylesheet" type="text/css" />
+        <title>Yoga Studio</title>
+
     </head>
-    <body>
-        <fieldset> 
-            <legend>Reason for Waiver Request</legend>
-            <form action="applyForWaiver" method="post">
-                
-                     
+    <div id="container">
+        <body>
+            <div id="body">
+                <legend>Reason for Waiver Request</legend>
+                <form action="applyForWaiver" method="post">
+
+
                     <label>Course: </label>${currentCourse.courseName}
                     <br/>
                     <label>Reason: </label>
@@ -25,11 +28,14 @@
                     <textarea name="reason" rows="5" cols="50"></textarea>
                     <br/>
                     <label><input type="submit" value="Submit"/></label> 
-                    
-            </form>
-            
-            <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
-            
-        </fieldset>    
-    </body>
+
+                </form>
+
+                <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+
+                </fieldset>    
+            </div>
+        </body>
+        <jsp:include page="/WEB-INF/views/footer.jsp"/> 
+    </div>
 </html>

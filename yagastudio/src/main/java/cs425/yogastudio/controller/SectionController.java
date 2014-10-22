@@ -35,9 +35,11 @@ public class SectionController {
     FacultyService facultyService;
 
     @RequestMapping(value = "/createSection", method = RequestMethod.POST)
-    public String creatingSection(int selectedCourse, int selectedfaculty, String seatsavailable, Model model, HttpSession session) {
-        Course course = courseService.get(selectedCourse);
-        
+    public String creatingSection(Integer selectedcourse, Integer selectedfaculty, String seatsavailable, 
+            HttpSession session, Model model) {
+//        System.out.println("###############################"+selectedcourse);
+        Course course = courseService.get(selectedcourse);
+//        System.out.println("#################" + course);
         Faculty faculty = facultyService.get(selectedfaculty);
         int seats = parseInt(seatsavailable);
         Section newSection = new Section(seats,course, faculty);
@@ -71,7 +73,8 @@ public class SectionController {
         return "sectionUpdate";
     }
     @RequestMapping(value = "/section/{id}", method = RequestMethod.POST)
-    public String updateSection(Section section, @PathVariable int id, HttpSession session, int selectedfaculty, String seatsAvailable) {
+    public String updateSection(@PathVariable int id, HttpSession session, int selectedfaculty, String seatsAvailable) {
+        Section section = sectionService.get(id);
         section.setTeacher(facultyService.get(selectedfaculty));
         int seats2 = parseInt(seatsAvailable);
         section.setSeatsAvailable(seats2);

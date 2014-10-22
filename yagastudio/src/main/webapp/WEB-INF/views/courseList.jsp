@@ -30,7 +30,7 @@
                             <td class="tg-hv32">${course.courseCredit}</td>
 
                             <td class="tg-hv32"><a href="course/${course.id}">edit
-                                    <form action="course/delete?courseId=${course.id}" metdod="post">
+                                    <form action="course/delete?courseId=${course.id}" method="post">
                                         <button type="submit">Delete</button>
                                     </form>  </td>
                         </tr>

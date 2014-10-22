@@ -12,52 +12,56 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="resources/style.css" rel="stylesheet" type="text/css" />
-        <title>Course Detail</title>
+        <title>Yoga Studio</title>
+
     </head>
-    <body>
+    <div id="container">
+        <body>
+            <div id="body">
 
         <!--<form action="../courses/${course.id}" method="POST">-->
-            <!--<form>-->
+                <!--<form>-->
                 <fieldset>
                     <legend>Course Detail:</legend>
                     Course Name: ${currentCourse.courseName}<br>
                     Course Code: ${currentCourse.courseCode}<br>
                     Credit Hours: ${currentCourse.courseCredit}
                     Sections:<br/>
-                    
-                    <!--<form action="../enroll/${section.id}" method="POST">-->
+
+<!--<form action="../enroll/${section.id}" method="POST">-->
                     <!--<form action="../enroll" method="get">-->
-                        <ul>
-                            <c:forEach var="section" items="${currentCourse.sections}" >
-                                <!--<li>-->
-                                    <!--<input type="radio" name="sectionid" value="${section.id}" />-->
-                                    <!--Professor ${section.teacher.firstName} ${section.teacher.lastName}<br />-->
-                                <!--</li>-->
-
-                                
-
-                                    <li>
-                                        Professor ${section.teacher.firstName} ${section.teacher.lastName}  
-                                        <a href="../enroll/${section.id}">enroll</a>
-                                    </li>
-
-<!--                                <input type="submit" value="Enroll"/>-->
+                    <ul>
+                        <c:forEach var="section" items="${currentCourse.sections}" >
+                            <!--<li>-->
+                                <!--<input type="radio" name="sectionid" value="${section.id}" />-->
+                                <!--Professor ${section.teacher.firstName} ${section.teacher.lastName}<br />-->
+                            <!--</li>-->
 
 
-                            </c:forEach>
-                        </ul>
-                        
-                        <!--<input type="submit" value="Enroll"/>-->
-                    
+
+                            <li>
+                                Professor ${section.teacher.firstName} ${section.teacher.lastName}  
+                                <a href="../enroll/${section.id}">enroll</a>
+                            </li>
+
+                            <!--                                <input type="submit" value="Enroll"/>-->
+
+
+                        </c:forEach>
+                    </ul>
+
+                    <!--<input type="submit" value="Enroll"/>-->
+
                     <!--</form>-->
                 </fieldset>
 
 
-                    
+
                 <p> <a href="registerForCourse">Register</a> &nbsp;
                     <a href="applyForWaiver"> Apply For Waiver</a></p>
-            </form>
-
-
-    </body>
+                </form>
+            </div>
+        </body>
+        <jsp:include page="/WEB-INF/views/footer.jsp"/> 
+    </div>
 </html>

@@ -40,7 +40,7 @@
                             <td class="tg-hv32">${section.seatsAvailable}</td>
 
                             <td class="tg-hv32"> <a href="section/${section.id}">edit</a>
-                                <form action="section/delete?sectionId=${section.id}" metdod="post">
+                                <form action="section/delete?sectionId=${section.id}" method="post">
                                     <button type="submit">Delete</button>
                                 </form></td>
                         </tr>

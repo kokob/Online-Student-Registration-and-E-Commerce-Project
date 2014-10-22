@@ -35,10 +35,7 @@
                     </div>
 
                     <label> First Name:  </label><input type="text" name="firstname" /> 
-                    <label>Last Name:  </label><input type="text" name="lastname" />                      
-                    <label>Gender:  </label>
-                    <label> <input type="radio" name="gender" value= "M">Male</input> 
-                        <input type="radio" name="gender" value="F">Female</input>   </label> 
+                    <label>Last Name:  </label><input type="text" name="lastname" /> 
                     <label> User Name:  </label><input type="text" name="username" />                     
                     <label> Password:  </label><input type="password" name="password" />
                     <label> Email:  </label><input type="text" name="email" />

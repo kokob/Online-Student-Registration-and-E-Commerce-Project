@@ -20,18 +20,19 @@
                 <jsp:include page="/WEB-INF/views/header.jsp"/> 
         <h3>Create a Section</h3>
         <fieldset>
+            ${allcourses}
             <form action="createSection" method="POST" class = "basic-grey" style="width:300px">        
                 <label>Course: 
                 <select name="selectedcourse">
                     <c:forEach var="course" items="${allcourses}" >
-                        <option value="${course.id}">${course.courseName} (${course.courseCode})</option>
+                        <option value="${course.id}">${course.courseName} ${course.id} &nbsp (${course.courseCode})</option>
                     </c:forEach>
                 </select></label>
             
                 <label>Faculty:
                 <select name="selectedfaculty">
                     <c:forEach var="faculty" items="${allfaculties}" >
-                        <option value="${faculty.id}">Professor ${faculty.firstName} ${faculty.lastName}</option>
+                        <option value="${faculty.id}">Professor ${faculty.firstName} &nbsp  ${faculty.lastName}</option>
                     </c:forEach>
                 </select></label>
             
