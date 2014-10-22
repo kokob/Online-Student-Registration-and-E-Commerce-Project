@@ -11,16 +11,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="resources/style.css" rel="stylesheet" type="text/css" />
+        <link href="../resources/style.css" rel="stylesheet" type="text/css" />
         <title>Yoga Studio</title>
 
     </head>
-    <div id="container">
+     <div id="container">
         <body>
             <div id="body">
-
-        <!--<form action="../courses/${course.id}" method="POST">-->
-                <!--<form>-->
+                <jsp:include page="/WEB-INF/views/header.jsp"/> 
                 <fieldset>
                     <legend>Course Detail:</legend>
                     Course Name: ${currentCourse.courseName}<br>
@@ -57,8 +55,7 @@
 
 
 
-                <p> <a href="registerForCourse">Register</a> &nbsp;
-                    <a href="applyForWaiver"> Apply For Waiver</a></p>
+                
                 </form>
             </div>
         </body>

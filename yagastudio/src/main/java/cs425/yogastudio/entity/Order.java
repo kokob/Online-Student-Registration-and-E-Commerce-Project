@@ -28,11 +28,11 @@ public class Order {
 		super();
 	}
 
-	public Order(Date date, Customer customer) {
+	public Order(Date date, Customer customer ,List<OrderLine> orderLines) {
 		super();
 		this.date = date;
 		this.customer = customer;
-		this.orderLines = new ArrayList<OrderLine>();
+		this.orderLines = orderLines;
 	}
 
 	public void setDate(Date date) {

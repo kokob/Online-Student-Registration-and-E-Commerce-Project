@@ -157,8 +157,10 @@ public class ProductController {
     
      @RequestMapping(value="/product/{id}", method=RequestMethod.POST)
 	public String updateProduct(@PathVariable int id, HttpSession session,String productName, 
-             String price, String description) {
+            String price, String description) {
             Product product = productService.get(id);
+            int thePrice = parseInt(price);
+            product.setPrice(thePrice);
             product.setProductName(productName);
             product.setDescription(description);   
             product.getProductImage();

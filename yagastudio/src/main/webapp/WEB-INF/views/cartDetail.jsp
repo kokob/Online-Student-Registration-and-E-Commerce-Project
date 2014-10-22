@@ -47,10 +47,13 @@
 
                 </table>
 
-                        <h3><a href="toProductList">add Items</a></h3>
-                        
-                        
-                        <h3><a href="index.jsp">check OUT</a></h3>
+                <h3><a href="toProductList">add Items</a></h3>
+                <!--<h3><a href="index.jsp">check Out</a></h3>-->
+
+
+                <h3> <form action ="checkOut" method="POST">
+                        <input type="submit" value="Check Out"/>
+                    </form></h3>
 
             </div>
         </body>

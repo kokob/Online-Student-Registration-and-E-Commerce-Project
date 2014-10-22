@@ -24,11 +24,9 @@
         <!---->        
         <!--<intercept-url pattern="/**" access="isAuthenticated()"/>-->
 
-        <intercept-url pattern="/addProduct" method="GET" access="ROLE_ADMIN" />
-        <intercept-url pattern="/addCourse" method="GET" access="ROLE_FACULTY" />
-        <intercept-url pattern="/addCustomer" method="GET" access="ROLE_ADMIN" />
         <intercept-url pattern="/addToCart/**" method="POST" access="ROLE_CUSTOMER" />
-        
+        <intercept-url pattern="/enroll/**" method="GET" access="ROLE_CUSTOMER" />
+            
         <!--default-target-url="/login"-->
         
         <form-login  login-page="/login.jsp" authentication-failure-url = "/login.jsp?login_error=1"/>

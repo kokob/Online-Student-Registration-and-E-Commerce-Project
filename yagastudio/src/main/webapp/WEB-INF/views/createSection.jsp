@@ -20,7 +20,7 @@
                 <jsp:include page="/WEB-INF/views/header.jsp"/> 
         <h3>Create a Section</h3>
         <fieldset>
-            ${allcourses}
+            
             <form action="createSection" method="POST" class = "basic-grey" style="width:300px">        
                 <label>Course: 
                 <select name="selectedcourse">

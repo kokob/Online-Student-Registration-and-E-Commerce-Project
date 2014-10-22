@@ -1,6 +1,7 @@
 package cs425.yogastudio.controller;
 
 import cs425.yogastudio.entity.Customer;
+import cs425.yogastudio.entity.Order;
 import cs425.yogastudio.entity.OrderLine;
 import cs425.yogastudio.entity.ShoppingCart;
 import cs425.yogastudio.entity.Product;
@@ -8,6 +9,8 @@ import cs425.yogastudio.service.CustomerService;
 import cs425.yogastudio.service.OrderLineService;
 import cs425.yogastudio.service.ShoppingCartService;
 import cs425.yogastudio.service.ProductService;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -53,7 +56,7 @@ public class ShoppingCartController {
         
         orderLineService.addOrderLine(o1);
  
-        shoppingCartService.update(sc1);
+       
         
         List<OrderLine> currentOrderLines = orderLineService.getAllByCustomerId(c1.getId());
         
@@ -62,9 +65,12 @@ public class ShoppingCartController {
         for(OrderLine ol : currentOrderLines){
             totalPrice += ol.getQuantity() * ol.getProduct().getPrice();
         }
+        
+        sc1.setTotalPrice(totalPrice);
+        shoppingCartService.update(sc1);
         session.setAttribute("currentShoppingCartPrice",totalPrice );
         
-        System.out.println("############################ am here");
+       
          return "redirect:/cartDetails";
          
          
@@ -76,6 +82,53 @@ public class ShoppingCartController {
         return "cartDetail";
     }
 
+     @RequestMapping(value = "/checkOut", method = RequestMethod.POST)
+    public String checkingOut(HttpSession session) {
+        
+        String view = "redirect:/checkOutSuccess";
+        
+        UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Customer c1 = (Customer)customerService.getCustomerByUser(userDetails.getUsername());
+        ShoppingCart sc1 = c1.getShoppingCart();
+        
+        
+        List<OrderLine> currentOrderLines = orderLineService.getAllByCustomerId(c1.getId());
+          
+        if(currentOrderLines.isEmpty()){
+            return "redirect:/checkOutError";
+        }
+        
+        else{
+            
+        
+            Order newOrder = new Order(new Date(), c1, currentOrderLines);
+
+            session.setAttribute("currentOrderLines", currentOrderLines);
+            session.setAttribute("currentOrder", newOrder);
+            session.setAttribute("currentOrderPrice", sc1.getTotalPrice());
+            
+            
+            
+            
+        return view;
+        }
+     
+    }
+    
+    
+    @RequestMapping(value = "checkOutSuccess", method = RequestMethod.GET)
+    public String goToCheckOutSuccess(HttpSession session, Model model){
+        
+        
+        return "checkOutSuccess";
+    }
+    @RequestMapping(value = "checkOutError", method = RequestMethod.GET)
+    public String goToCheckOutFailure(HttpSession session, Model model){
+        
+        
+        return "checkOutFailure";
+    }
+    
 
 
 }

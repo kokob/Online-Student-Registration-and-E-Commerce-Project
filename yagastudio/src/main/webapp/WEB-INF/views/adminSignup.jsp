@@ -15,8 +15,11 @@
     </head>
     <div id="container">
         <body>
-            <div id="body">     
-                <form action="addAdmin" method="post">
+            <div id="body">
+                <jsp:include page="/WEB-INF/views/header.jsp"/> 
+                <fieldset> 
+                   
+                <form action="addAdmin" method="post" class = "basic-grey">
                     <div>
                         <legend>New Admin signup</legend>           
                         <label>First Name:</label> <input type="text" name="firstname" />                    
@@ -27,13 +30,14 @@
 
                         <label><input type="submit" value="Register" /></label>
                     </div>
+                    <label><a href="index.jsp">Cancel</a><label>
 
                 </form>
-                <label><a href="index.jsp">Cancel</a><label>
+                
                         </fieldset>    
 
-                        </div>
-                        </body>
-                        <jsp:include page="/WEB-INF/views/footer.jsp"/> 
-                        </div>
-                        </html>
+                         </div>
+        </body>
+        <jsp:include page="/WEB-INF/views/footer.jsp"/> 
+    </div>
+</html>

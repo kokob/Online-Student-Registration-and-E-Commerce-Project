@@ -63,6 +63,10 @@ input {
 
 
 }
+h1{
+    font-family: cursive;
+    font-size: 20px;
+}
 
 #header .logo {
     float:left;
@@ -323,7 +327,7 @@ html[xmlns] #menu-bar {
     outline: 0 none;
     padding: 3px 3px 3px 5px;
     width: 70%;
-    font-size: 12px;
+    font-size: 14px;
     line-height:15px;
     box-shadow: inset 0px 1px 4px #ECECEC;
     -moz-box-shadow: inset 0px 1px 4px #ECECEC;
@@ -340,7 +344,7 @@ html[xmlns] #menu-bar {
     -moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
-    width: 70%;
+    width: 200px;
     height: 35px;
     line-height: 25px;
 }
