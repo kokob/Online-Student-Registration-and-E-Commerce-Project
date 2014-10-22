@@ -21,10 +21,10 @@
             <img src="resources/banner2.png"  height="100" alt="logo" />
             <ul id="menu-bar">
                 <li class="active"><a href="index.jsp">Home</a></li>
-                <li><a href="#">Customers</a>
+                <li><a href="viewCourses">Courses</a>
 
                 </li>
-                <li><a href="#">Products</a>
+                <li><a href="products">Products</a>
 
                 </li>
                 
@@ -41,7 +41,7 @@
                         <span><input type="text" name="searchText" class="search square"><input type="submit" class="search square" value="Search"></span>
                     </form>
                 </div>    </li>
-                  <li><a href="aboutUs.jsp">About Us</a></li>
+                  <li><a href="aboutUs.jsp">About</a></li>
 
             </ul>
 

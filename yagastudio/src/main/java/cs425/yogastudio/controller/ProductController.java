@@ -147,7 +147,7 @@ public class ProductController {
         return "redirect:/products";
     }
     
-     @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+@RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
     public String update(Model model, @PathVariable int id, HttpSession session) {
         session.setAttribute("product", productService.get(id));
         model.addAttribute("product", productService.get(id)); // 
@@ -165,8 +165,7 @@ public class ProductController {
             productService.update(product);
 		return "redirect:/products";
 	}
-
-        
+  
         
          @RequestMapping(value = "/searchProducts", method = RequestMethod.POST)
     public String searchProductsByName(String searchText, HttpSession session ){

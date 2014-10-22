@@ -26,7 +26,7 @@
                     Reason: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
                     </font>
                 </c:if>
-                <form name='form' action="j_spring_security_check" method='POST'>
+                <form name='form' action="j_spring_security_check" method='POST' class = "basic-grey">
                     <table>
                         <tr>
                             <td>User:</td>
@@ -40,6 +40,8 @@
                             <td><input name="submit" type="submit" value="LogIn" /></td>
                         </tr>
                     </table>
+                                        <a href="customerSignup"> Customer sign up</a>
+
                 </form>
             </div>
         </body>

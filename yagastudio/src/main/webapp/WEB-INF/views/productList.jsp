@@ -33,7 +33,7 @@
                                 <li>Description: ${myproduct.description}</li>	
 
                                 <sec:authorize access="hasRole('ROLE_ADMIN')" >
-                                    <a href="products/${myproduct.id}">edit</a>
+                                    <a href="product/${myproduct.id}">edit</a>
                                     <form action="product/delete?productId=${myproduct.id}" method="post">
                                         <button type="submit">Delete</button>
                                     </form>

@@ -17,13 +17,15 @@
         <div id="body">
             <jsp:include page="/WEB-INF/views/header.jsp"/> 
 
-
+<fieldset >
+                <p> This software Engineering project is done by a group of four students from Mahirishi University of Management</p>
+                <p>The problem description of the project follows</p>
             <h1>  Problem Description – Yoga Studio Project  </h1>
             <p>
                 We have a growing Yoga Studio with many classes, faculty, customers, and Yoga 
                 products. We need an on-line and unified management system that will allow our 
                 customers to register for classes, our administrators to create and manage the classes, 
-                and our customers to purchase products. 
+                and our customers to purchase products. </p>
 
             <ol><li>Our online class registration system for our Yoga studio should allow customers 
                     to enroll in one or more class for each semester. Each customer has an ID and a 
@@ -44,7 +46,7 @@
                     purchase them on-line. </li> 
             </ol>
 
-            </p>
-
+            
+</fieldset>
     </body>
 </html>
