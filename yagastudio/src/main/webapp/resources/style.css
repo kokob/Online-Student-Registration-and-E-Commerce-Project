@@ -47,6 +47,9 @@ label{
     text-align: left;
     margin-bottom: 1.2em;
 }
+.errorClass{
+    color:red;
+}
 input {
     float: left;
 }

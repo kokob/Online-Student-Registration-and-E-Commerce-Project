@@ -11,6 +11,7 @@ import cs425.yogastudio.entity.Faculty;
 import cs425.yogastudio.service.CustomerService;
 import cs425.yogastudio.service.FacultyService;
 import cs425.yogastudio.service.UserService;
+import java.io.IOException;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -38,7 +41,7 @@ public class SignupController {
     @RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
     public String addCustomer(String firstname, String lastname, String email,
             String username, String password, String state, String zip, String street,
-            String city, Model model, HttpSession session) {
+            String city, Model model, HttpSession session, @RequestParam("file") MultipartFile file) {
 
         if (checkUsername(username)) {
             session.setAttribute("nonUniqueMessage", null);
@@ -47,6 +50,15 @@ public class SignupController {
             Address newAddress = new Address(state, zip, street, city);
 //         ShoppingCart shoppingCart = new ShoppingCart(newCustomer);
 
+            
+               if (!file.isEmpty()) {
+            try {
+                newCustomer.setProductImage(file.getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+            
             newCustomer.addAddress(newAddress);
             customerService.addCustomer(newCustomer);
             //model.addAttribute("newcustomer", newCustomer);

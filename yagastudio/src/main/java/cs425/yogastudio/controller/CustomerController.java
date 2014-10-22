@@ -47,31 +47,31 @@ public class CustomerController {
         return "customerSignup";
     }
 
-    @RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
-    public String addCustomer(String firstname, String lastname, String email,
-            String username, String password, String state, String zip, String street,
-            String city, Model model, HttpSession session, @RequestParam("file") MultipartFile file) {
-
-        
-       
-        
-        Customer newCustomer = new Customer(firstname, lastname, email, username, password);
-        Address newAddress = new Address(state, zip, street, city);
-//         ShoppingCart shoppingCart = new ShoppingCart(newCustomer);
-        if (!file.isEmpty()) {
-            try {
-                newCustomer.setProductImage(file.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        newCustomer.addAddress(newAddress);
-        customerService.addCustomer(newCustomer);
-        //model.addAttribute("newcustomer", newCustomer);
-        session.setAttribute("added", newCustomer.getFirstName());
-        return "redirect:/signUpSuccess";
-    }
+//    @RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
+//    public String addCustomer(String firstname, String lastname, String email,
+//            String username, String password, String state, String zip, String street,
+//            String city, Model model, HttpSession session, @RequestParam("file") MultipartFile file) {
+//
+//        
+//       
+//        
+//        Customer newCustomer = new Customer(firstname, lastname, email, username, password);
+//        Address newAddress = new Address(state, zip, street, city);
+////         ShoppingCart shoppingCart = new ShoppingCart(newCustomer);
+//        if (!file.isEmpty()) {
+//            try {
+//                newCustomer.setProductImage(file.getBytes());
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        newCustomer.addAddress(newAddress);
+//        customerService.addCustomer(newCustomer);
+//        //model.addAttribute("newcustomer", newCustomer);
+//        session.setAttribute("added", newCustomer.getFirstName());
+//        return "redirect:/signUpSuccess";
+//    }
     
      @RequestMapping(value = "/customerpic/{id}", method = RequestMethod.GET)
     public void getUserImage(Model model, @PathVariable int id, HttpServletResponse response) {

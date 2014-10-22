@@ -20,14 +20,14 @@
         <div id="header">
             <img src="resources/banner2.png"  height="100" alt="logo" />
             <ul id="menu-bar">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="index.jsp">Home</a></li>
                 <li><a href="#">Customers</a>
 
                 </li>
                 <li><a href="#">Products</a>
 
                 </li>
-                <li><a href="about.jsp">About</a></li>
+                
                 <li><a href="#">Contact Us</a></li>
                 <li>  <sec:authorize access="isAnonymous()">
                         <a href="login.jsp"> Log in</a>    
@@ -36,6 +36,12 @@
                     <sec:authorize access="isAuthenticated()">
                         <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
                     </sec:authorize></li>
+                  <li> <div class="lighter">
+                    <form action="searchProducts" method="post">
+                        <span><input type="text" name="searchText" class="search square"><input type="submit" class="search square" value="Search"></span>
+                    </form>
+                </div>    </li>
+                  <li><a href="aboutUs.jsp">About Us</a></li>
 
             </ul>
 
